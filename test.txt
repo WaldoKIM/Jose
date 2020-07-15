@@ -31,9 +31,7 @@ please type;
 
 -git status
 
-now you ready to upload to remote repository
-
-for upload to your remote repository
+for set your remote repository path
 
 please type;
 
@@ -42,6 +40,14 @@ please type;
 e.g.
 
 -git remote add origin https://github.com/WaldoKIM/Jose.git
+
+now you ready to upload to remote repository
+
+for upload your files
+
+please type;
+
+git push -u origin master
 
 well done!
 
