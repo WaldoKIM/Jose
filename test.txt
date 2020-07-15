@@ -1,3 +1,48 @@
-Java the hutt
+This is a test text for git.
 
-pizza the hutt
+for checking the status
+
+please type;
+
+-git status
+
+then for save the changes
+
+please type;
+
+-git add test,txt
+
+or type;
+
+-git add . 
+
+for all files
+
+then for commit- which means submit,
+
+please type;
+
+-git commit -m "your message as commnetary"
+
+
+then for check update status
+
+please type;
+
+-git status
+
+now you ready to upload to remote repository
+
+for upload to your remote repository
+
+please type;
+
+-git remote add origin https://github.com/YourID/YourProjectname.git
+
+e.g.
+
+-git remote add origin https://github.com/WaldoKIM/Jose.git
+
+well done!
+
+now you can check your file on github.com!
