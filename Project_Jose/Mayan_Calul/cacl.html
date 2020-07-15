@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>마야 역법 계산기</title>
+<!--This Waldonized calculator page is based on a classic and beuatiful code from https://www.fourmilab.ch/documents/calendar/  by John Walker
+I removed other calculator except mayan then fixed cupple of minor errors such as year 0 problem which I decripted in Js code.
+-->    
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+    #eee{display: none}
+    .hiddendata{display: normal}
+    .calendar_input{display: block; background-color: aquamarine; overflow: hidden;}
+    .calendar_result{display: block; background-color: dodgerblue; overflow: hidden;}
+    .calendar_legend{display: block; background-color: skyblue; overflow: hidden;}
+    body.main {
+        margin-left: 15%;
+        margin-right: 10%;
+	background-color: #FFFFFF;
+	color: #000000;
+    }
+    
+    dt {
+    	margin-top: 1ex;
+    }
+    
+    input.ctr {
+        text-align: center
+    }
+    
+    p {
+    	text-align: justify;
+    }
+    
+    p.c {
+    	text-align: center;
+    }
+    
+    span.bcad {
+    	font-variant: small-caps;
+	text-transform: lowercase;
+    }
+    
+    table.a {
+   	float: right;
+    	margin-left: 12px;
+	width: 170px;
+    }
+    
+    table.l {
+    	border: 1px outset black;
+    	float: left;
+    	margin-right: 8px;
+	background-color: #D0D0D0;
+	color: #000000;
+	width: 45%;
+    }
+    
+    table.l td, th {
+    	border: 1px inset;
+	padding: 5px;
+    }
+    
+    table.r {
+    	border: 1px outset black;
+    	float: right;
+    	margin-left: 8px;
+	background-color: #D0D0D0;
+	color: #000000;
+    }
+    
+    table.r td, th {
+    	border: 1px inset;
+    }
+</style>
+
+<meta name="keywords" content="calendar, converter, Julian, Gregorian, Islamic, Hebrew, Persian, Mayan, French, Indian" />
+<meta name="description" content="Calendar Converter" />
+<meta name="author" content="John Walker" />
+<meta name="robots" content="index" />
+
+
+
+<script type="text/javascript" language="JavaScript" src="calendar.js">
+</script>
+<script type="text/javascript">
+    function calcGregorian()
+{
+    updateFromGregorian();
+}
+    function setDateToToday()
+{
+    var today = new Date();
+//document.gregorian.year.value = today.getFullYear();
+    
+
+    /*  The following idiocy is due to bizarre incompatibilities
+        in the behaviour of getYear() between Netscrape and
+        Exploder.  The ideal solution is to use getFullYear(),
+        which returns the actual year number, but that would
+        break this code on versions of JavaScript prior to
+        1.2.  So, for the moment we use the following code
+        which works for all versions of JavaScript and browsers
+        for all year numbers greater than 1000.  When we're willing
+        to require JavaScript 1.2, this may be replaced by
+        the single line:
+
+           
+
+        Thanks to Larry Gilbert for pointing out this problem.
+    */
+
+    document.gregorian.year.value = today.getFullYear();
+    document.gregorian.month.selectedIndex = today.getMonth();
+    document.gregorian.day.value = today.getDate();
+    document.gregorian.hour.value =
+    document.gregorian.min.value =
+    document.gregorian.sec.value = "00";
+}
+    </script>
+
+</head>
+<body class="main">
+
+<h1>Calendar Converter</h1>
+
+<div class="calendar_input">
+<h3><a name="gregorian">Gregorian Calendar</a></h3>
+
+<form name="gregorian" action="javascript:return false;">
+<table class="l">
+
+<tr>
+<th>
+    Date:
+</th>
+<td align="center">
+<input type="radio" id="ad" name="adbc" value="ad" checked="checked">
+  <label for="ad">AD</label><br>
+  <input type="radio" id="bc" name="adbc" value="bc">
+  <label for="bc">BC</label><br>  
+    <input type="text" name="year" value="2012" size="5" />
+    <select name="month" size="1">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+    <input type="text" name="day" value="21" size="3" />
+
+    <br />
+
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly" />
+</td>
+</tr>
+
+<tr>
+<th>
+    Time:
+</th>
+<td align="center">
+    <input type="text" name="hour" value="00" size="2" />:<input
+    	   type="text" name="min" value="00" size="2" />:<input
+	   type="text" name="sec" value="00" size="2" />
+</td>
+</tr>
+
+<tr>
+<th>
+    Weekday:
+</th>
+<td align="center">
+    <input type="text" name="wday" value="" size="9" class="ctr" readonly="readonly" />
+</td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+
+<input type="button" value="Calculate" onclick="calcGregorian();" />
+&nbsp; &nbsp;
+<input type="button" value="Today" onclick="setDateToToday(); calcGregorian();" />
+</td>
+</tr>
+</table>
+</form>
+    </div>
+<!-- 부활절 달걀-->
+<div id='x'></div>
+<script>
+function dele(){                
+var del_i = document.querySelector("#x");	//제거하고자 하는 엘리먼트
+var del_ifr = del_i.lastChild;
+del_ifr.parentNode.removeChild(del_ifr);
+var hidee = document.querySelector('.edel');
+var check_ifr = del_i.getElementsByTagName("iframe")
+if(check_ifr.length == 0){
+    hidee.style.display='none';}
+};
+</script>
+
+<button class='edel' id ='eee' onclick="dele();">지우기</button>
+
+<div class="hiddendata">
+ <h3><a name="julianday">Julian Day</a></h3>
+
+<form name="julianday" action="javascript:return false;">
+<table class="l">
+
+<tr>
+<td align="center">
+    <b>Julian day:</b>
+
+    <input type="text" name="day" value="" size="16" />
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input type="button" value="Calculate" onclick="calcJulian();" />
+</td>
+</tr>
+</table>
+</form>
+
+
+<form name="modifiedjulianday" action="javascript:return false;">
+<table class="l">
+
+<tr>
+<td align="center">
+    <b>Modified Julian day:</b>
+    <input type="text" name="day" value="" size="16" />
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input type="button" value="Calculate" onclick="calcModifiedJulian();" />
+</td>
+</tr>
+</table>
+</form>
+
+<p>
+While any event in recorded human history can be written as
+a positive Julian day number, when working with contemporary
+events all those digits can be cumbersome.  A <em>Modified
+Julian Day</em> (MJD) is created by subtracting 2400000.5
+from a Julian day number, and thus represents the number of
+days elapsed since midnight (00:00) Universal Time on
+November 17, 1858.  Modified Julian Days are widely used to
+specify the epoch in tables of orbital elements of
+artificial Earth satellites.  Since no such objects existed
+prior to October 4, 1957, all satellite-related MJDs are
+positive.
+<br clear="left" />
+</p>
+
+                     <h3><a name="juliancalendar">Julian Calendar</a></h3>
+
+<form name="juliancalendar" action="javascript:return false;">
+<table class="l">
+
+<tr>
+<th>
+    Date:
+</th>
+<td align="center">
+
+    <input type="text" name="year" value="" size="5" />
+    <select name="month" size="1">
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+    <input type="text" name="day" value="" size="3" />
+
+    <br />
+
+    <input type="text" name="leap" value="" size="12" class="ctr" readonly="readonly" />
+
+    <br />
+    <input type="text" name="wday" value="" size="9" class="ctr" readonly="readonly" />
+</td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<input type="button" value="Calculate" onclick="calcJulianCalendar();" />
+</td>
+</tr>
+</table>
+</form>
+
+<p>
+The Julian calendar was proclaimed by Julius Cæsar in 46 <span class="bcad">B.C.</span>
+and underwent several modifications before reaching its final
+form in 8 <span class="bcad">C.E.</span>  The Julian calendar differs from the Gregorian
+only in the determination of leap years, lacking the correction
+for years divisible by 100 and 400 in the Gregorian calendar.
+In the Julian calendar, any positive year is a leap year if
+divisible by 4.  (Negative years are leap years if the absolute value
+divided by 4 yields a remainder of 1.)  Days are considered to
+begin at midnight.
+</p>
+
+<p>
+In the Julian calendar the average year has a length of 365.25 days.
+compared to the actual solar tropical year
+of 365.24219878 days.  The calendar thus accumulates one day of
+error with respect to the solar year every 128 years.
+Being a purely solar calendar, no attempt is made to synchronise the
+start of months to the phases of the Moon.
+<br clear="left" />
+</p>
+
+    </div>
+
+
+<div class="calendar_result">
+<h3><a name="mayan">Mayan Calendars</a></h3>
+
+<form name="mayancount" action="javascript:return false;">
+<table class="l">
+
+<tr>
+<td align="center">
+<b>Mayan Long Count</b>
+ <br />
+
+    <input type="text" name="baktun" value="" size="4" />
+    <b>.</b>
+    <input type="text" name="katun" value="" size="3" />
+    <b>.</b>
+    <input type="text" name="tun" value="" size="3" />
+    <b>.</b>
+    <input type="text" name="uinal" value="" size="3" />
+    <b>.</b>
+    <input type="text" name="kin" value="" size="3" />
+
+<p />
+
+    <b>Haab:</b>&nbsp;&nbsp;<input type="text" name="haab" value="" size="9" class="ctr" readonly="readonly" />
+<br />
+    <b>Tzolkin:</b>&nbsp;&nbsp;<input type="text" name="tzolkin" value="" size="10" class="ctr" readonly="readonly" />
+</td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<input type="button" value="Calculate" onclick="calcMayanCount();" />
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<div class="calendar_legend">
+<table class="r">
+<tr>
+<th>Cycle</th>
+<th>Composed of</th>
+<th>Total<br /> Days</th>
+<th>Years<br />(approx.)</th>
+</tr>
+
+<tr>
+<td><b>kin</b></td>
+<td>&nbsp;</td>
+<td align="center">1</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>uinal</b></td>
+<td align="center">20 kin</td>
+<td align="center">20</td>
+<td align="center">&nbsp;</td>
+</tr>
+
+<tr>
+<td><b>tun</b></td>
+<td align="center">18 uinal</td>
+<td align="center">360</td>
+<td align="center">0.986</td>
+</tr>
+
+<tr>
+<td><b>katun</b></td>
+<td align="center">20 tun</td>
+<td align="center">7200</td>
+<td align="center">19.7</td>
+</tr>
+
+<tr>
+<td><b>baktun</b></td>
+<td align="center">20 katun</td>
+<td align="center">144,000</td>
+<td align="center">394.3</td>
+</tr>
+
+<tr>
+<td><b>pictun</b></td>
+<td align="center">20 baktun</td>
+<td align="center">2,880,000</td>
+<td align="center">7,885</td>
+</tr>
+
+<tr>
+<td><b>calabtun</b></td>
+<td align="center">20 piktun</td>
+<td align="center">57,600,000</td>
+<td align="center">157,704</td>
+</tr>
+
+<tr>
+<td><b>kinchiltun</b></td>
+<td align="center">20 calabtun</td>
+<td align="center">1,152,000,000</td>
+<td align="center">3,154,071</td>
+</tr>
+
+<tr>
+<td><b>alautun</b></td>
+<td align="center">20 kinchiltun</td>
+<td align="center">23,040,000,000</td>
+<td align="center">63,081,429</td>
+</tr>
+
+</table>
+</div>
+
+
+
+<script> 
+setDateToToday();
+    calcGregorian();
+</script>
+</body>
+</html>

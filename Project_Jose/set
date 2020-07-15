@@ -1,0 +1,34 @@
+﻿DB에 쿼리 전송
+mysqli_query(DB 연결 객체, 전송할 쿼리);
+
+DB 종료
+mysqli_close(DB 연결 객체)
+
+
+// 쿼리 작성
+    $sql = "select uid from members where uid='$check_id';";
+
+    // 쿼리 전송
+    $result = mysqli_query($con, $sql);
+
+    // 결과 리턴
+    // mysqli_fetch_row($result); // 필드배열
+    // mysqli_fetch_array($result); // 필드
+    // mysqli_num_rows($result); // 행 개수 출력
+    
+    session_start();
+    // 세션 저장
+    $_SESSION["uid"] = $array["uid"];
+    // session 삭제
+    unset($_SESSION["uid"]);
+    
+    
+    
+    <?php
+            // 데이터 항목 수 만큼 반복
+            while($array=mysqli_fetch_array($result)){
+        ?>
+            <td><?php echo $array["idx"] ?></td>
+        <?php
+            }
+        ?>

@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700')
+@font-face { font-family: 'KBIZHanmaumGothic'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KBIZHanmaumGothic.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'SeoulNamsanM'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+/* Css Reset */
+body,h1,h2,h3,p,div,ul,ol,li,dl,dt,dd{margin:0;padding:0}
+body{font-family:"Nanum+Gothic","맑은 고딕", "apple_gothic",sans-serif;font-size:16px;line-height:1.5;letter-spacing:-0.05em}
+ul,li{list-style:none}
+a{text-decoration:none;color:#000}
+address{font-style:normal}
+/* defalut font */
+
+/* day n knights of camellot */
+.top_menu label {background: blue;}
+input[type="checkbox"]
+{-webkit-appearance: none;
+	display: none;
+	visibility: hidden;}
+
+.check
+{position: relative;
+display: block;
+width: 40px;
+height:20px;
+background: #092c3e;
+cursor: pointer;
+border-radius: 20px;
+overflow: hidden;
+transition:ease-out 3s;
+z-index: -10    
+}
+
+input[type="checkbox"]:checked ~ .check
+{background: #fff;
+box-shadow: 0 0 0 5200px #ff2;
+}
+
+.check:before
+{content: url(images/btn_daymode.png);
+position: absolute;
+top: -1px;
+left: -1px;
+background: #fff;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+transition: 0.5s;
+}
+input[type="checkbox"]:checked ~ .check:before
+{transform: translateX(50px) scale(0.5);
+ }
+.check:after
+{content: url(images/btn_nightmode.png);
+position: absolute;
+top: -2px;
+right: 6px;
+background-color: transparent;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+transition: 0.5s;
+transform: translateX(50px);
+}
+
+
+input[type="checkbox"]:checked ~ .check:after
+{transform: translateX(0px);
+}
+
+
+/* skip menu */
+.skipMenu{position:relative}
+.skipMenu a{position:absolute;top:-40px;left:0;width:138px;border:1px solid #4ec53d;background:darkblue;text-align:center;z-index:-1000}
+.skipMenu a:active,.skipMenu a:focus{top:0;z-index:1000;text-decoration:none}
+.skipMenu span{display:inline-block;padding:2px 6px 0 0;color:#fff;letter-spacing:-1px;font-size:16px;line-height:32px}
+/* Css started here */
+.header{height:100px;border-top:1px solid white;box-sizing:border-box}
+.header .logo{width:80px;height:60px;position:relative;top:35px;left:35px;font-family:"SeoulNamsanM","sans-serif";color:#3d3724;font-size:20pt;margin-top:3px;line-height:30px;background:url(images/logo.png) no-repeat;padding-left:60px}
+.header .logo a{display:block;position:absolute;text-align:right;left:5px; width:130px;height:60px;font-size:22pt;}
+.GNB{width:1200px;height:80px; margin:-5px auto 0} /*position 이 필요한지, 필요하다면 하위 항목에 불필요한 포지션은 없는지 확인할 것*/
+.GNB_title{position:absolute;left:-9999px;top:-9999px}
+.GNB_position{line-height:20px;list-style:none;float:right;margin:10px 30px 0 0; font-weight:700;color:#3d3724}
+.GNB_position li{position:relative;float:left}
+.GNB_position li ul li{font-size:12pt;font-weight:400}
+.GNB_intro>a {font-size:14pt; color: #382929}
+.GNB_intro{z-index:1;list-style:none;margin-right:55px;height:30px}
+.GNB_intro:hover #intro{animation:test 0.7s; animation-fill-mode:forwards; visibility:visible}
+@keyframes test{100% {width:572px}}
+    /*-webkit-animation:intro 0.7s 1;animation-fill-mode:forwards;
+    -moz-animation:intro 0.7s 1;animation-fill-mode:forwards;
+    -ms-animation:intro 0.7s 1;animation-fill-mode:forwards;
+    -o-animation:intro 0.7s 1;animation-fill-mode:forwards;
+    animation:intro 0.7s 1;animation-fill-mode:forwards;*/
+}
+/*@-webkit-keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}
+@-moz-keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}
+@-ms-keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}
+@-o-keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}
+@keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}*/
+/*@-webkit-keyframes intro1 {100% {color:white}}
+@-moz-keyframes intro1 {100% {color:white}}
+@-ms-keyframes intro1 {100% {color:white}}
+@-o-keyframes intro1 {100% {color:white}}*/
+
+
+
+/*아래 코드가 중복되는것은 버그때문임 하나만 있으면 작동 안함 왜죠???*/
+.GNB_intro>a:hover{color:#d11a0a;text-shadow:2px 2px lightgray}
+.GNB_intro>a:hover{color:#d11a0a;text-shadow:2px 2px lightgray}
+
+.GNB_intro ul li a:hover{color:lavenderblush;font-size:17px;  font-weight:bold}
+.GNB_intro ul{width:0px;height:40px;border-radius:50px;background-color:#d11a0a;position:absolute;left:-30px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_intro li{margin:0px 20px;}
+#intro li a{color:transparent;}
+.GNB_intro:hover>#intro li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_museo>a {font-size:14pt; color: #382929}
+.GNB_museo{z-index:2;list-style:none;margin-right:65px;height:30px}
+.GNB_museo:hover #museo{animation:museo_1 0.7s;animation-fill-mode:forwards; visibility:visible}
+@keyframes museo_1{100% {width:580px}}
+.GNB_museo:hover>#museo li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+
+.GNB_museo>a:hover{color:#e07409;text-shadow:2px 2px lightgray}
+.GNB_museo ul li a:hover{color:lavenderblush;font-size:17px;  font-weight:bold}
+.GNB_museo ul{width:0px;height:40px;border-radius:50px;background-color:#e07409;position:absolute;left:-30px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_museo li{margin:0px 20px;}
+.GNB_museo li a{color:transparent}
+.GNB_gallery>a {font-size:14pt; color: #382929}
+.GNB_gallery>ul {margin-left:65px;}
+.GNB_gallery{z-index:3;list-style:none;margin-right:70px;height:30px}
+.GNB_gallery:hover #gallery{animation:gallery_1 0.5s,gallery_2 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes gallery_1{100% {width:440px}}
+@keyframes gallery_2{100%{margin-left: -105px}}
+.GNB_gallery>a:hover{color:#dda611;text-shadow:2px 2px lightgray}
+.GNB_gallery:hover>#gallery li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_gallery ul li a:hover{color:lavenderblush;font-size:17px;  font-weight:bold}
+.GNB_gallery ul{width:0px;height:40px;border-radius:50px;background-color:#dda611;position:absolute;left:-30px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_gallery li{margin:0px 20px;}
+.GNB_gallery li a{color:transparent}
+.GNB_cappilla>a {font-size:14pt; color: #382929}
+.GNB_cappilla>ul {margin-left:65px;}
+.GNB_cappilla{z-index:4;list-style:none;margin-right:65px;height:30px}
+.GNB_cappilla:hover #cappilla{animation:cappilla_1 0.5s, cappilla_2 0.5s; animation-fill-mode:forwards; visibility:visible}
+@keyframes cappilla_1{100% {width:470px;}}
+@keyframes cappilla_2{100% {margin-left:-170px;}}
+/*멍청한 IE 시리즈를 위한 작은 배려, 하나의 키 프레임에 하나의 애니메이션만 넣을 것.*/
+
+
+.GNB_cappilla>a:hover{color:#4c9a0a;text-shadow:2px 2px lightgray}
+.GNB_cappilla:hover>#cappilla li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_cappilla ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
+.GNB_cappilla ul{width:0px;height:40px;border-radius:50px;background-color:#4c9a0a;position:absolute;left:-30px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_cappilla li{margin:0px 20px;}
+.GNB_cappilla li a{color:transparent}
+.GNB_jardin>a {font-size:14pt; color: #382929}
+.GNB_jardin>ul {margin-left: 165px;}
+.GNB_jardin{z-index:5;list-style:none;margin-right:65px;height:30px}
+.GNB_jardin:hover #jardin{animation:jardin_1 0.5s,jardin_2 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes jardin_1{100% {width:460px}}
+@keyframes jardin_2{100%{margin-left:-5px }}
+.GNB_jardin>a:hover{color:#0e3889;text-shadow:2px 2px lightgray}
+.GNB_jardin:hover>#jardin li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_jardin ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
+.GNB_jardin ul{width:0px;height:40px;border-radius:50px;background-color:#0e3889;position:absolute;left:-130px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_jardin li{margin:0px 20px;}
+.GNB_jardin li a{color:transparent}
+.GNB_comida>a {font-size:14pt; color: #382929}
+.GNB_comida>ul{margin-left:145px;}
+.GNB_comida{z-index:6;list-style:none;margin-right:70px;height:30px}
+.GNB_comida:hover #comida{animation:comida_1 0.5s,comida_2 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes comida_1{100% {width:470px}}
+@keyframes comida_2{100%{margin-left:-165px}}
+.GNB_comida>a:hover{color:#1d065a;text-shadow:2px 2px lightgray}
+.GNB_comida:hover>#comida li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_comida ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
+.GNB_comida ul{width:0px;height:40px;border-radius:50px;background-color:#1d065a;position:absolute;left:-90px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_comida li{margin:0px 20px;}
+.GNB_comida li a{color:transparent}
+.GNB_plaza>a {font-size:14pt; color: #382929}
+.GNB_plaza>ul{margin-left:145px;}
+.GNB_plaza{z-index:7;list-style:none;height:30px}
+.GNB_plaza:hover #plaza{animation:plaza_1 0.5s,plaza_2 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes plaza_1{100% {width:392px}}
+@keyframes plaza_2{100%{margin-left:-195px}}
+.GNB_plaza>a:hover{color:#a30768;text-shadow:2px 2px lightgray}
+.GNB_plaza:hover>#plaza li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_plaza ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
+.GNB_plaza ul{width:0px;height:40px;border-radius:50px;background-color:#a30768;position:absolute;left:-130px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_plaza li{margin:0px 20px;}
+.GNB_plaza li a{color:transparent}
+@keyframes intro1 {100% {color:white}}
+.top_wrap{width:100%;position:absolute;top:0px;border-bottom:1px solid #f1f1f1}
+.top_menu{width:1200px; height:25px;margin:auto;}
+.topmenu_title{position:absolute;left:-9999px;top:-9999px}
+.top_menu ul {list-style:none;float:right;margin-right:34px }
+.top_menu ul li{float:left;margin:0px 16px}
+.day_n_night{padding-right:5px;}
+.day_n_night .day{width:23px; position:absolute;background: url(images/btn_daymode.png)center no-repeat;text-indent:-9999px}
+.day_n_night .night{width:23px; position:absolute;background: url(images/btn_nightmode.png)center no-repeat;text-indent:-9999px;z-index:-3 }
+.day_n_night .day:active,.day_n_night .day:focus{top:-40px}
+.ribbon {position:absolute; top:750px; height:50px;width: 100%;z-index: -1; background-color: darkcyan;}
+.content{margin-bottom:100px}/*z-index나 footer와 마진 등*/
+.main_banner_wrap{width:100%;height:679px;position:relative;background:url(images/main_banner_bg0.png)top center}
+.main_banner_wrap{animation: none 2s 1;animation-timing-function: ease-in;animation-fill-mode:forwards;}
+@keyframes mymy {100%{height:440px; background-color:transparent}
+}
+.main_banner{width:1200px;margin:auto;position:relative}
+.main_banner h2{position:absolute;left:-9999px;top:-9999px}
+.main_banner h3{margin:80px 0 0 100px;width:700px;box-sizing:border-box;font-size: 48pt;line-height:80px;font-family:"SeoulNamsanM","sans-serif"}
+.banner1, .banner2, .banner3, .banner4{position:absolute;}
+.banner1 .linebox{display:block;width:755px;height:435px;border:4px solid #d50055;margin:165px 0 0 445px;box-sizing:border-box}
+.banner1 img{margin:-85px -30px}
+.banner1 a{color:white}
+.banner1 a:hover{animation: mymove 2s 1;animation-timing-function: ease-in;color:#d50055}
+@keyframes mymove {
+  from {color:#fff;}
+  to {color:#d50055;}
+}
+.banner1 .banner_date{color: white; font-size: 24px; position: relative; left: 100px;top:25px;}
+.banner2 .linebox{display:block;width:755px;height:435px;border:4px solid #d50055;margin:165px 0 0 445px;box-sizing:border-box}
+.banner2 img{margin:-85px -30px}
+.banner2 a{color:white}
+.banner2 a:hover{animation: mymove 2s 1;animation-timing-function: ease-in;color:#d50055}
+@keyframes mymove {
+  from {color:#fff;}
+  to {color:#d50055;}
+}
+.banner2 .banner_date{color: white; font-size: 24px; position: relative; left: 100px;top:25px;}
+.banner2 P{letter-spacing:0.5px; }
+.banner3 .linebox{display:block;width:755px;height:435px;border:4px solid #d50055;margin:165px 0 0 445px;box-sizing:border-box}
+.banner3 img{margin:-85px -30px}
+.banner3 a{color:white}
+.banner3 a:hover{animation: mymove1 2s 1;animation-timing-function: ease-in;color:#3ae9c6}
+@keyframes mymove1 {
+  from {color:#fff;}
+  to {color:#3ae9c6;}
+}
+.banner3 .banner_date{color: white; font-size: 24px; position: relative; left: 100px;top:25px;}
+.banner4 .linebox{display:block;width:755px;height:435px;border:4px solid #d50055;margin:165px 0 0 445px;box-sizing:border-box}
+.banner4 img{margin:-85px -30px}
+.banner4 a{color:white}
+.banner4 a:hover{animation: mymove1 2s 1;animation-timing-function: ease-in;color:#3ae9c6}
+@keyframes mymove {
+  from {color:#fff;}
+  to {color:#d50055;}
+}
+.banner4 .banner_date{color: white; font-size: 24px; position: relative; left: 100px;top:25px;}
+
+/*.banner2{display:none}
+.banner3{display:none}
+.banner4{display:none}*/
+.banner_control{position:absolute;top:245px; width:1200px;margin:0px auto;font-size:36pt;padding-left:50px;box-sizing:border-box}
+.banner_control .left{font-family:Nanum+Gothic;color:white;margin-right:700px}
+.banner_control p{position:absolute;left:-9999px;top:-9999px}
+.banner_control .right{font-family:Nanum+Gothic;color:white;margin-left:-20px;}
+#bar_pager {position: relative;margin-left:50px;box-sizing:border-box;}
+.bar_pager_ani {position: absolute;box-sizing:border-box}
+.bar_pager_ani .uno_ani{animation-name:bar1; animation-iteration-count: infinite; animation-timing-function:linear; animation-duration: 32s; animation-delay: 0s;  width:140px;background-color:transparent;height:2px;text-indent:-9999px;position:absolute; top:0px left:0px;}
+@keyframes bar1{
+    0%{width: 0px; background-color:red;}
+    25%{width: 140px; background-color:red}
+    26%{width: 140px; background-color:transparent}
+    100%{width: 140px; background-color:transparent}
+}
+
+
+.bar_pager_ani .dos_ani{animation-name:bar1; animation-iteration-count: infinite;animation-timing-function:linear; animation-duration: 32s; animation-delay: 8.1s;  width:140px;background:transparent;height:2px;text-indent:-9999px;position: absolute;top:0px; left:170px;}
+.bar_pager_ani .tres_ani{animation-name:bar1; animation-iteration-count: infinite;animation-timing-function:linear;animation-duration: 32s;animation-delay: 16.1s;  width:140px;background:transparent;margin-right:30px;height:2px;float:left;text-indent:-9999px;position: absolute;top:0px; left:350px;}
+.bar_pager_ani .quatro_ani{animation-name:bar1; animation-iteration-count: infinite;animation-timing-function:linear;animation-duration: 32s;animation-delay: 24.1s;  width:140px;background:transparent;margin-right:20px;height:2px;float:left;text-indent:-9999px;position: absolute;top:0px; left:520px;}
+/*자바스크립트로 정지 버튼 눌렀을때 애니메이션 중단, 막대 색 빨강으로 변경, 다시 재생눌렀을때 애니메이션 시작 구현 근데 딜레이는 어떡하지??? */
+
+
+
+#bar_pager .uno{width:140px;background:#fff;color: red;margin-right:30px;height:2px;float:left;text-indent:-9999px}
+#bar_pager .dos{width:140px;background:#fff;color: red;margin-right:40px;height:2px;float:left;text-indent:-9999px}
+#bar_pager .tres{width:140px;background:#fff;color: red;margin-right:30px;height:2px;float:left;text-indent:-9999px}
+#bar_pager .quatro{width:140px;background:#fff;color: red;margin-right:20px;height:2px;float:left;text-indent:-9999px}
+
+.pause_n_play{clear:both;overflow:hidden;margin:20px 0 0 48px; }
+.pause_n_play .bx-stop{display:block;background:url(images/icon_pause.png)no-repeat;text-indent:-9999px;width:20px; float:left;margin-right:20px;height:26px}
+.pause_n_play .bx-start{display:block;background:url(images/icon_play.png)no-repeat;text-indent:-9999px;width:24px; float:left;height:26px} 
+.mid_bg{width:100%;position:; background:url(images/mid_bg0.png) no-repeat center top}
+.mid_content_wrap{width:1200px;margin:0 auto 60px}
+.index_booking{width:420px;position: relative;float:left;margin-top:-150px }
+.index_booking a{color:white}
+.index_booking p{position:relative;top:105px;width:193px;padding-left:20px; margin:auto;color:white;}
+.index_booking h2{font-size:32px;  width:100%;position:absolute;top:50px;left:60px;padding-left:100px;background:url(images/element_booking.png)no-repeat 65px bottom}
+.booking_calendar{position:relative;top:135px; display:block;width:333px;height:254px; margin:auto;background-color:lightgrey;border-radius:20px;z-index:20}
+.general_info{width:280px;height:456px;margin:-50px 0 80px 10px;background:#f2c72f;position:relative;font-size:14px}
+.general_info h3{position:absolute;top:-9999px;left:-9999px}
+.general_info dt{color:#1a7360}
+.general_info dd{padding-left:5px}
+.general_info dl{position: relative;top:160px;margin:10px;padding-left:5px;letter-spacing:-0.09em;line-height:25px}
+.general_info .red{color:#e4007f}
+.general_info .plus{position:absolute;top:162px;left: 220px}
+.plus::after{content:"+"}
+.notice{width:585px;height:250px; position:relative;top:300px;float:right;margin-right:10px;letter-spacing:normal}
+.notice h2{color:#1a7360}
+.notice ul{margin-top:10px;line-height:30px}
+.notice li{padding-top:20px;border-bottom: 1px solid lightgray;color:#655e5e}
+.notice li a{color:#655e5e}
+.notice .date{float:right;margin-right:20px;}
+.notice>a{float:right;margin:-235px 15px 0 0}
+.notice>a::after{content:"+"}
+.shortcut{clear:both;width:1200px;overflow:hidden;  margin:auto;padding:30px 0 0 12px;box-sizing:border-box}
+.shortcut h2{position:absolute;left:-9999px;top:-9999px}
+.square1{width:578px;height:296px;background:url(images/square1.png);float:left;line-height:296px;text-align:center;position:relative;top:0}
+.square1:hover{animation:square_dnace1 0.3s 1;animation-fill-mode:forwards;}
+@keyframes square_dnace1 {100% {background:url(images/square1_hover.png)}100%{position:relative;top:-30px}}
+.square1 a{font-family:"SeoulNamsanM","sans-serif";font-size:42pt;color:white;text-shadow:3px 3px #333;display:block}
+.square2{width:565px;height:345px;background:url(images/square2.png);float:left;margin:44px 0 0 34px;box-sizing:border-box;line-height:345px;text-align:center;position:relative;top:0}
+.square2:hover{animation:square_dnace2 0.3s 1;animation-fill-mode:forwards;}
+@keyframes square_dnace2 {100% {background:url(images/square2_hover.png)}100%{position:relative;top:-30px}}
+.square2 a{font-family:"SeoulNamsanM","sans-serif";font-size: 42pt;color:white;text-shadow:3px 3px #333;display:block}
+.square3{width:578px;height:345px;background:url(images/square3.png);float:left;margin-top:-61px;line-height:345px;text-align:center}
+.square3 a{font-family:"SeoulNamsanM","sans-serif";font-size: 42pt;color:white;text-shadow:3px 3px #333;display:block}
+.square4{width:565px;height:252px;background:url(images/square4.png);float:left;margin:32px 0 80px 32px;line-height:252px;text-align:center}
+.square4 a{font-family:"SeoulNamsanM","sans-serif";font-size:42pt;color:white;text-shadow:3px 3px #333;display:block}
+
+/*심지어 애니메이션을 쪼개도 배경그림 변경은 안되는군 IE니가 짱 먹어라... 하지만 자바스크립트가 출동한다면 어떨까?*/
+.circle1{display:block;float:left;}
+.circle1 .circle{background:url(images/icon_circle1.png) ;display:block; width:160px;height:160px;border-radius:50%;margin:0 90px 20px 10px;top:0;position:relative}
+.circle1 .circle:hover{animation:circle_dnace1 0.3s 1;animation-fill-mode:forwards;}
+@keyframes circle_dnace1{100% {background:url(images/icon_circle1_hover.png)}100%{top:-15px}}
+.circle1 .title{display:block;width:160px;text-align:center;font-family:"SeoulNamsanM","sans-serif";font-size:16pt;font-weight:bold;color:#343123}
+.circle2{display:block;float:left;}
+.circle2 .circle{background:url(images/icon_circle2.png);display:block; width:160px;height:160px;border-radius:50%;margin:0 90px 20px 0;top:0;position:relative}
+.circle2 .circle:hover{animation:circle_dnace2 0.3s 1;animation-fill-mode:forwards;}
+@keyframes circle_dnace2{100% {background:url(images/icon_circle2_hover.png)}100%{top:-15px}}
+.circle2 .title{display:block;width:160px;text-align:center;font-family:"SeoulNamsanM","sans-serif";font-size:16pt;font-weight:bold;color:#343123}
+.circle3{display:block;float:left;}
+.circle3 .circle{background:url(images/icon_circle3_hover.png);display:block;width:160px;height:160px;border-radius:50%;margin:0 90px 20px 0;top:0;position:relative}
+.circle3 .circle:hover{animation:circle_dnace3 0.3s 1;animation-fill-mode:forwards;}
+@keyframes circle_dnace3 {100% {background:url(images/icon_circle3.png)}100%{top:-15px}}
+.circle3 .title{display:block;width:160px;text-align:center;font-family:"SeoulNamsanM","sans-serif";font-size:16pt;font-weight:bold;color:#343123}
+.circle4{display:block;float:left;}
+.circle4 .circle{background:url(images/icon_circle4.png);display:block; width:160px;height:160px;border-radius:50%;margin:0 90px 20px 0;top:0;position:relative}
+.circle4 .circle:hover{animation:circle_dnace4 0.3s 1;animation-fill-mode:forwards;}
+@keyframes circle_dnace4{100% {background:url(images/icon_circle4_hover.png)}100%{top:-15px}}
+.circle4 .title{display:block;width:160px;text-align:center;font-family:"SeoulNamsanM","sans-serif";font-size:16pt;font-weight:bold;color:#343123}
+.circle5{display:block;float:left;}
+.circle5 .circle{background:url(images/icon_circle5.png);display:block; width:160px;height:160px;border-radius:50%;margin-bottom:20px;top:0;position:relative}
+.circle5 .circle:hover{animation:circle_dnace5 0.3s 1;animation-fill-mode:forwards;}
+@keyframes circle_dnace5{100% {background:url(images/icon_circle5_hover.png)}100%{top:-15px}}
+.circle5 .title{display:block;width:160px;text-align:center;font-family:"SeoulNamsanM","sans-serif";font-size:16pt;font-weight:bold;color:#343123}
+.foundation{clear:both;position:relative;padding-bottom:85px;overflow:hidden}
+.foundation .f_wrap{width:1200px;height:60px; margin:auto}
+.foundation h2{float:left;font-family:"SeoulNamsanM","sans-serif";font-size:30px;font-weight:bold;color:#343123}
+.foundation a{float:right;margin-top:10px;font-size:20px;text-decoration:underline}
+.fading{background-image:linear-gradient(-90deg,rgba(255,255,255,1),rgba(0,0,0,0),rgba(255,255,255,1));height:30px;z-index:12;overflow: hidden;margin:auto;left:0;right:0;position:absolute;width:1200px}
+.foundation ul{height:30px;overflow:hidden;width:1200px; margin:auto;position:relative;z-index:11;font-size:20px;}
+.foundation li{margin-right:20px;color:#5f5f5f;display: inline-block}
+.first_li {animation: bannermove 60s linear infinite; margin-left: -300px;}
+@keyframes bannermove { 0% {margin-left: 0px; }
+ 100% {margin-left: -3195px; }}
+.end_content_wrap{background:url(images/bottom_bg.png) no-repeat center;margin-top:-55px auto}
+.external_event{width:1200px;height:888px;margin:auto;padding-top:100px}
+.external_event h2{font-size:32pt;font-family:"SeoulNamsanM","sans-serif";text-align:center}
+.external_event dl{overflow: hidden;margin-bottom:100px; position:relative}
+.external_event dt{font-size:16pt;text-align:center;margin-bottom:42px}
+.ex_event1{float:left;margin:0 30px 0 4px;text-align:center}
+.ex_event1 .poster1{width:276px;height:394px;display:block;text-align:center;background:url(images/ex_event1.png)center no-repeat;z-index:125;border-bottom:4px solid #3ae9c6; position: relative;top:0px;box-sizing: border-box;}
+.ex_event1 .poster1:hover{animation:event1 0.3s 1;animation-fill-mode:forwards;border-bottom:8px solid #3ae9c6;}
+@keyframes event1 {100%{top:-30px}}
+.ex_event1 .poster1:hover+.title1{color:#d50055;position:relative;}
+.ex_event1 .title1{font-size:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ex_event1 .title1:hover{color:#d50055;position:relative}
+.ex_event2{float:left;margin-right:30px;text-align:center}
+.ex_event2 .poster2{width:276px;height:394px;display:block;text-align:center;background:url(images/ex_event2.png) center no-repeat;z-index:125;border-bottom:4px solid #3ae9c6;box-sizing:border-box;position:relative;top:0px;}
+.ex_event2 .poster2:hover{animation:event1 0.3s 1;animation-fill-mode:forwards;border-bottom:8px solid #3ae9c6;}
+.ex_event2 .title2{font-size:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ex_event2 .poster2:hover+.title2{color:#d50055}
+.ex_event2 .title2:hover{color:#d50055}
+.ex_event3{float:left;margin-right:30px;text-align:center}
+.ex_event3 .poster3{width:276px;height:394px;display:block;text-align:center;background:url(images/ex_event3.png) center no-repeat;z-index:125;border-bottom:4px solid #3ae9c6;box-sizing:border-box;position:relative;top:0px;}
+.ex_event3 .poster3:hover{animation:event1 0.3s 1;animation-fill-mode:forwards;border-bottom:8px solid #3ae9c6;}
+.ex_event3 .poster3:hover+.title3{color:#d50055}
+.ex_event3 .title3{display: block;width:276px;font-size:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ex_event3 .title3:hover{color:#d50055}
+.ex_event4{float:left;text-align:center}
+.ex_event4 .poster4{width:276px;height:394px;display:block;text-align:center;background:url(images/ex_event4.png) center no-repeat;z-index:125;border-bottom: 4px solid #3ae9c6;box-sizing:border-box;position:relative;top:0px;}
+.ex_event4 .poster4:hover{animation:event1 0.3s 1;animation-fill-mode:forwards;border-bottom:8px solid #3ae9c6;}
+.ex_event4 .title4{display: block;width:276px;font-size:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ex_event4 .poster4:hover+.title4{color:#d50055}
+.ex_event4 .title4:hover{color:#d50055}
+.events{display: block;text-align: center;font-size:20px;text-decoration:underline}
+.footer{text-align: center; position:relative; background:url(images/footer_bg.png) no-repeat center top;margin: auto;}
+.footer .logo{width:80px;height:60px;margin:auto;font-family:"SeoulNamsanM","sans-serif";font-size:20pt;line-height:30px;background:url(images/logo.png) no-repeat;padding-left:60px}
+.footer .logo a{color:#3d3724;display:block;position:relative;text-align:right;left:-58px;width:130px;height:60px}
+.SNS{width:1200px;padding-top:90px;margin:auto;overflow:hidden;box-sizing: border-box}
+.SNS h2{position:absolute;top:-9999px;left:-9999px}
+.SNS .sns_icon_wrap{width:642px;overflow:hidden;margin:0 auto 80px}
+.SNS ul li{width:52px;height:50px;float:left;margin: auto}
+.SNS a{display:block;position:absolute;width:52px;height:50px;}
+.SNS .kakao{background:url(images/sns_kakao.png)no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .twitter{background:url(images/sns_twitter.png) no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .youtube{background:url(images/sns_youtube.png) no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .facebook{background:url(images/sns_facebook.png) no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .instagram{background:url(images/sns_instagram.png) no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .line{background:url(images/sns_line.png) no-repeat center;text-indent:-9999px;}
+.footer_info{width:1200px;margin:40px auto}
+.footer_info h2{position:absolute;top:-9999px;left:-9999px}
+.footer_info .wrap{width:642px;margin:auto;}
+.footer_law {float: left; overflow: hidden; margin: auto}
+.footer_law li {float: left; margin:0 5px 0 40px;}
+.site_link{float:left;margin-left:10px}
+.site_link .arrow{display: block; background:url(images/arrow_footer.png)no-repeat 130px}
+.site_link h3{font-weight:normal;font-size:1em; position:relative;z-index:21;}
+.site_link ul{position:relative;z-index:20;top:-170px;line-height:30px;padding:10px;border:2px inset #3ae9c6;background-color:rgba(23,225,212,0.1)}
+.site_link li{background-color:rgba(255,255,255,0.9);border-bottom:1px dotted #3ae9c6;font-size:16px}
+.address {clear:both; position: relative;top:-80px;margin-bottom:-60px}
+.address h2{position:absolute;top:-9999px;left:-9999px}
+.law_n_order{width:1200px;margin:auto;overflow:hidden}
+.law_n_order h2{position:absolute;top:-9999px;left:-9999px}
+
+/* 오른쪽 날개부분 position left 50% + 600px(콘텐츠 영역의 절반)으로 위치 고정시킬수 있다 함. 왼쪽은 반대로) */

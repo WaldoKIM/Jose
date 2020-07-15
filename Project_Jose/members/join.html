@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <style type="text/css">
+        body,input,select,option,button{font-size:20px}
+        input[type=checkbox]{width:20px;height:20px}
+        .redText{color: orangered}
+        .blueText{color: dodgerblue}
+        .kText{color: dimgrey}
+        
+    </style>
+    <script type="text/javascript">
+        /*var apply_check_num = 0;*/
+        
+        function join_form_check(){
+            // 객체 생성
+            var uname = document.getElementById("unombre");
+            var uid = document.getElementById("uid");
+            var pwd = document.getElementById("usnp");
+            var repwd = document.getElementById("mellon");
+            var iamnotarobot = document.getElementById("yonosoyunrobot");
+            var tele = document.getElementById("utelefono");
+            
+            
+            if(!uname.value){
+                alert("이름을 입력하세요.");
+                uname.focus();
+                return false;
+            };
+            var reg_nombre=/^[^0-9\!\?@#\$%\^\&*\)\(\[\]\{\}\+=._-]+$/g;
+    if(!reg_nombre.test(uname.value)){
+    //if(reg.test(tele.value)==false); 동일식    
+    alert("이름에 숫자나 기호는 사용하실 수 없습니다");
+    uname.focus();    
+    return false;    
+    };     
+            
+            if(!uid.value){
+                alert("이메일 주소를 입력해 주세요");
+                uid.focus();
+                return false;
+            };
+            //if(uid.value.length<5 || uid.value.length>12){
+            //    alert("아이디는 6~12글자만 입력할 수 있습니다.");
+            //    uid.focus();
+            //    return false;
+            //};
+            /*
+            var regExp =/^[\w\-]+@(?:(?:[\w\-]{2,}\.)+[a-zA-Z]{2,})$/;
+
+            if(emailVal.match(regExp) != null){
+                var xmlhttp = fncGetXMLHttpRequest()
+            ;}
+        else{
+             dp.innerHTML = '사용가능한 이메일 주소를 입력해 주세요';
+//길이 조건에 맞지 않을 경우 회색처리
+            dp.className = 'kText';};
+            */
+            
+            if(!pwd.value){
+                alert("비밀번호를 입력하세요.");
+                pwd.focus();
+                return false;
+            };
+            if(pwd.value.length<8 || pwd.value.length>16){
+                alert("비밀번호는 8~16글자만 입력할 수 있습니다.");
+                pwd.focus();
+                return false;
+            };
+            
+            
+            if(pwd.value != repwd.value){
+                alert("비밀번호를 확인해 주세요.");
+                repwd.focus();
+                return false;
+            };
+            
+            var reg=/^[0-9]+$/g;
+    //if(tele.value.length<9 || tele.value.length>20){}
+    //else 
+      if(!tele.value){
+       }else if(!reg.test(tele.value)){
+    //if(reg.test(tele.value)==false); 동일식    
+    alert("전화번호는 숫자만 입력하세요.");
+    tele.focus();    
+    return false;    
+    };   
+
+       //     if(!iamnotarobot.checked){
+        //        alert("약관 동의가 필요합니다.");
+       //         iamnotarobot.focus();
+         //       return false;
+        //    };
+            
+            document.join_form.submit();
+        };
+        
+        //아이디 중복확인 : 클릭 시 검사창 팝업
+        function search_addr(){
+            window.open("search_id.php", "id", "width=500,height=200,left=50, top=50");
+        };
+        
+        // 옵션 선택시 email_dns에 텍스트 출력
+        function change_email(){
+            var email_dns = document.getElementById("email_dns");
+            var email_sel = document.getElementById("email_sel");
+            
+            var idx = email_sel.options.selectedIndex;
+            // alert(idx)
+            var selected_value = email_sel.options[idx].value;
+            // alert(selected_value);
+            email_dns.value = selected_value;
+        };
+        //
+       // verifyEmail = function() {
+  /* 이메일 검증 스크립트 작성
+  var emailVal = $("#email").val();
+
+  var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+  // 검증에 사용할 정규식 변수 regExp에 저장
+
+  if (emailVal.match(regExp) != null) {
+    alert('Good!');
+  }
+  else {
+    alert('Error');
+  }
+};*/
+        
+        
+       // var uidl = uid.textContent.length; 
+        //ajax id check //what if length<6||>12 else
+        function getCont( id ) {            
+            var uid = document.getElementById("uid");
+            var uidl = uid.value.length;
+            var dp  = document.getElementById('rst');
+            var emailVal = uid.value;
+            var regExp =/^[\w\-]+@(?:(?:[\w\-]{2,}\.)+[a-zA-Z]{2,})$/;
+
+            if(emailVal.match(regExp) != null){
+                var xmlhttp = fncGetXMLHttpRequest()
+            ;}
+        else{
+             dp.innerHTML = '사용가능한 이메일 주소를 입력해 주세요';
+//길이 조건에 맞지 않을 경우 회색처리
+            dp.className = 'kText';};
+        
+    
+    
+
+    // 아이디를 체크할 php 페이지에 체크 하려하는 id 값을 파라미터로 전송
+    xmlhttp.open('GET', 'idcheck_ajax/id_check_ajax.php?uid='+id, false);
+
+    xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+
+    xmlhttp.onreadystatechange = function (){
+        if( xmlhttp.readyState=='4' && xmlhttp.status==200 ){
+            if( xmlhttp.status==500 || xmlhttp.status==404 || xmlhttp.status==403 )
+                alert( xmlhttp.status );
+            else{
+                // id_check_url.php 페이지에서 넘겨온 문자를 확인 하기 위하여 알림창으로 출력
+                // 차후 주석 처리 하면 되는 부분이며 페이지에서 넘어오는 값중 개행값이 없도록 처리
+				var txt = xmlhttp.responseText;
+				txt = txt.replace(/\n/g, "");//행바꿈제거
+				txt = txt.replace(/\r/g, "");//엔터제거
+				txt = txt.replace(/\s+/, "");//왼쪽 공백제거
+				txt = txt.replace(/\s+$/g, "");//오른쪽 공백제거
+                // alert('id_check_ajax.php 페이지에서 반환된 값 : '+txt+'\r필드에서 입력 받은 값 : ' + id);
+                
+                /* 게시판에서 주로 사용하는 예제
+                var txt = xmlhttp.responseText;
+				txt = txt.replace(/\n/g, "<br>");//행바꿈제거
+                */
+                
+
+				var dp  = document.getElementById('rst');
+
+                if(txt=='Y') {
+                    dp.innerHTML = '이미 사용중인 이메일 주소입니다.';
+                    dp.className = 'redText';
+                } else{
+                    dp.innerHTML = '사용할 수 있는 이메일 주소입니다.';
+                    dp.className = 'blueText';
+                }
+                //JS
+                //obj.style.property = "value";
+                //obj.className= "class_name"; <-css 필요
+                //JQ
+                //("selector").css({pro:value, pro:value...});
+                //클래스 사용은 찾아보셔요
+                
+            }
+        }
+    }
+    xmlhttp.send();
+        };
+                              
+//브라우저 호환성 관련 실제 기능x        
+function fncGetXMLHttpRequest(){
+    if (window.ActiveXObject){
+        try{
+            return new ActiveXObject("Msxml2.XMLHTTP");
+        }
+        catch(e){
+            try{
+                return new ActiveXObject("Microsoft.XMLHTTP");
+            } 
+		catch(e1) { return null; }
+        }
+        //IE 외 파이어폭스 오페라 같은 브라우저에서 XMLHttpRequest 객체 구하기
+    } else if (window.XMLHttpRequest){
+        return new XMLHttpRequest();
+    } else{
+        return null;
+    }
+}          
+    </script>
+</head>
+<body>
+    <form name="join_form" action="join_ok.php" method="post">
+        <fieldset>
+            <legend>회원가입</legend>
+            <p>
+                <label for="unombre">이름</label>
+                <input type="text" name="unombre" id="unombre">
+            </p>
+             <p>
+                <label for="uid">아이디</label>
+                <!--
+                <input type="text" name="uid" id="uid">
+                <button type="button" onclick="search_addr()">아이디 중복확인</button>
+                -->
+                 <input type="text" name="uid" id="uid" onkeyup="getCont(this.value);">
+                <span id="rst"></span>
+                <br>* 6~12글자만 입력할 수 있습니다.
+            </p>
+            <p>
+                <label for="usnp">비밀번호</label>
+                <input type="password" name="usnp" id="usnp">
+            </p>
+            <p>
+                <label for="mellon">비밀번호 확인</label>
+                <input type="password" name="mellon" id="mellon">
+            </p>
+            <!--
+               <p>
+                <label for="email_id">이메일</label>
+                <input type="text" name="email_id" id="email_id"> @ 
+                <input type="text" name="email_dns" id="email_dns"> 
+                <select name="email_sel" id="email_sel" onchange="change_email()">
+                    <option value="">직접입력</option>
+                    <option value="naver.com">네이버</option>
+                    <option value="hanmail.net">다음</option>
+                    <option value="gmail.com">지메일</option>
+                </select>
+            </p>
+            -->
+            <p>
+                <label for="utelefono">전화번호</label>
+                <input type="text" name="utelefono" id="utelefono">
+            </p>
+            <p>
+                <!--<input type="checkbox" name="apply" id="apply" onclick="apply_check()">-->
+                <input type="radio" value="1" name="unews" id="unews1">
+                <label for="unews1">이메일로 소식지 받기</label>
+                <input type="radio" value="0" name="unews" id="unews2" checked="checked">
+                <label for="unews2">수신안함</label>
+            </p>
+            
+                <!--<input type="checkbox" name="apply" id="apply" onclick="apply_check()">-->
+                <input type="checkbox" value="1" name="yonosoyunrobot" id="yonosoyunrobot">
+                <label for="yonosoyunrobot">본인인증</label>
+                <h3>이메일 본인 인증 기능 테스트를 생략할 경우 체크하세요</h3>
+           
+               
+                   <p>
+                <button type="button" onclick="history.back()">이전으로</button>
+                <button type="button" onclick="join_form_check()">가입하기</button>
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>
+            
+   
+      
+<!--<div class="iamnotarobot">
+ <form method="post" action="verification.php" name="iamnotarobot">
+  <input type="text" name="email">
+  <input type="password" name="password">
+  <input type="button" name="register" Value="본인인증" onclick="iamnotarobot()">
+ </form>
+
+  
+  <p>
+                <label for="yonosoyunrobot">본인인증 메일발송</label>
+                <input type="button" name="yonosoyunrobot" id="yonosoyunrobot"
+                value="메일 발송" onclick="iamnotarobot();">
+                <span id="humanafterall"></span>
+                <br>*발송된 이메일을 통해 본인인증을 완료한 뒤 위 버튼을 클릭해 주세요.
+            </p>
+</div>
+   -->  
+            
+  

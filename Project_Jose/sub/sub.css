@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700')
+@font-face { font-family: 'KBIZHanmaumGothic'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KBIZHanmaumGothic.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'SeoulNamsanM'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+/* Css Reset */
+body,h1,h2,h3,p,div,ul,ol,li,dl,dt,dd{margin:0;padding:0}
+body{font-family:"Nanum+Gothic","맑은 고딕", "apple_gothic",sans-serif;font-size:16px;line-height:1.5;letter-spacing:-0.05em}
+ul,li{list-style:none}
+a{text-decoration:none;color:#000}
+address{font-style:normal}
+/* defalut font */
+
+/* day n knights of camellot */
+.top_menu label {background: blue;}
+input[type="checkbox"]
+{-webkit-appearance: none;
+	display: none;
+	visibility: hidden;}
+
+.check
+{position: relative;
+display: block;
+width: 40px;
+height:20px;
+background: #092c3e;
+cursor: pointer;
+border-radius: 20px;
+overflow: hidden;
+transition:ease-out 3s;
+}
+
+input[type="checkbox"]:checked ~ .check
+{background: #fff;
+box-shadow: 0 0 0 5200px #ff2;
+}
+
+.check:before
+{content: url(../images/btn_daymode.png);
+position: absolute;
+top: -1px;
+left: -1px;
+background: #fff;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+transition: 0.5s;
+}
+input[type="checkbox"]:checked ~ .check:before
+{transform: translateX(50px) scale(0.5);
+ }
+.check:after
+{content: url(../images/btn_nightmode.png);
+position: absolute;
+top: -2px;
+right: 6px;
+background-color: transparent;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+transition: 0.5s;
+transform: translateX(50px);
+}
+
+
+input[type="checkbox"]:checked ~ .check:after
+{transform: translateX(0px);
+}
+
+
+/* skip menu */
+.skipMenu{position:relative}
+.skipMenu a{position:absolute;top:-40px;left:0;width:138px;border:1px solid #4ec53d;background:darkblue;text-align:center}
+.skipMenu a:active,.skipMenu a:focus{top:0;z-index:1000;text-decoration:none}
+.skipMenu span{display:inline-block;padding:2px 6px 0 0;color:#fff;letter-spacing:-1px;font-size:16px;line-height:32px}
+/* Css started here */
+.header{height:100px;border-top:1px solid white;box-sizing:border-box}
+.header .logo{width:80px;height:60px;position:relative;top:35px;left:35px;font-family:"SeoulNamsanM","sans-serif";color:#3d3724;font-size:20pt;margin-top:3px;line-height:30px;background:url(../images/logo.png) no-repeat;padding-left:60px}
+.header .logo a{display:block;position:absolute;text-align:right;left:5px; width:130px;height:60px;font-size:22pt;}
+.GNB{width:1200px;height:80px; margin:-5px auto 0} /*position 이 필요한지, 필요하다면 하위 항목에 불필요한 포지션은 없는지 확인할 것*/
+.GNB_title{position:absolute;left:-9999px;top:-9999px}
+.GNB_position{line-height:20px;list-style:none;float:right;margin:10px 30px 0 0; font-weight:700;color:#3d3724}
+.GNB_position li{position:relative;float:left}
+.GNB_position li ul li{font-size:12pt;font-weight:400}
+.GNB_intro>a {font-size:14pt; color: #382929}
+.GNB_intro{z-index:1;list-style:none;margin-right:55px;height:30px}
+.GNB_intro:hover #intro{animation:test 0.7s; animation-fill-mode:forwards; visibility:visible}
+@keyframes test{100% {width:572px}}
+    /*-webkit-animation:intro 0.7s 1;animation-fill-mode:forwards;
+    -moz-animation:intro 0.7s 1;animation-fill-mode:forwards;
+    -ms-animation:intro 0.7s 1;animation-fill-mode:forwards;
+    -o-animation:intro 0.7s 1;animation-fill-mode:forwards;
+    animation:intro 0.7s 1;animation-fill-mode:forwards;*/
+}
+/*@-webkit-keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}
+@-moz-keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}
+@-ms-keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}
+@-o-keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}
+@keyframes intro {100% {visibility:visible}0%.,0.01%{width:1px}100%{width:700px}}*/
+/*@-webkit-keyframes intro1 {100% {color:white}}
+@-moz-keyframes intro1 {100% {color:white}}
+@-ms-keyframes intro1 {100% {color:white}}
+@-o-keyframes intro1 {100% {color:white}}*/
+
+
+
+/*아래 코드가 중복되는것은 버그때문임 하나만 있으면 작동 안함 왜죠???*/
+.GNB_intro>a:hover{color:#d11a0a;text-shadow:2px 2px lightgray}
+.GNB_intro>a:hover{color:#d11a0a;text-shadow:2px 2px lightgray}
+
+.GNB_intro ul li a:hover{color:lavenderblush;font-size:17px;  font-weight:bold}
+.GNB_intro ul{width:0px;height:40px;border-radius:50px;background-color:#d11a0a;position:absolute;left:-30px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_intro li{margin:0px 20px;}
+#intro li a{color:transparent;}
+.GNB_intro:hover>#intro li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_museo>a {font-size:14pt; color: #382929}
+.GNB_museo{z-index:2;list-style:none;margin-right:65px;height:30px}
+.GNB_museo:hover #museo{animation:museo_1 0.7s;animation-fill-mode:forwards; visibility:visible}
+@keyframes museo_1{100% {width:580px}}
+.GNB_museo:hover>#museo li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+
+.GNB_museo>a:hover{color:#e07409;text-shadow:2px 2px lightgray}
+.GNB_museo ul li a:hover{color:lavenderblush;font-size:17px;  font-weight:bold}
+.GNB_museo ul{width:0px;height:40px;border-radius:50px;background-color:#e07409;position:absolute;left:-30px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_museo li{margin:0px 20px;}
+.GNB_museo li a{color:transparent}
+.GNB_gallery>a {font-size:14pt; color: #382929}
+.GNB_gallery>ul {margin-left:65px;}
+.GNB_gallery{z-index:3;list-style:none;margin-right:70px;height:30px}
+.GNB_gallery:hover #gallery{animation:gallery_1 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes gallery_1{100% {width:440px}100%{margin-left: -95px}}
+.GNB_gallery>a:hover{color:#dda611;text-shadow:2px 2px lightgray}
+.GNB_gallery:hover>#gallery li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_gallery ul li a:hover{color:lavenderblush;font-size:17px;  font-weight:bold}
+.GNB_gallery ul{width:0px;height:40px;border-radius:50px;background-color:#dda611;position:absolute;left:-30px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_gallery li{margin:0px 20px;}
+.GNB_gallery li a{color:transparent}
+.GNB_cappilla>a {font-size:14pt; color: #382929}
+.GNB_cappilla>ul {margin-left:65px;}
+.GNB_cappilla{z-index:4;list-style:none;margin-right:65px;height:30px}
+.GNB_cappilla:hover #cappilla{animation:cappilla_1 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes cappilla_1{100% {width:470px}100%{margin-left:-170px}}
+.GNB_cappilla>a:hover{color:#4c9a0a;text-shadow:2px 2px lightgray}
+.GNB_cappilla:hover>#cappilla li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_cappilla ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
+.GNB_cappilla ul{width:0px;height:40px;border-radius:50px;background-color:#4c9a0a;position:absolute;left:-30px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_cappilla li{margin:0px 20px;}
+.GNB_cappilla li a{color:transparent}
+.GNB_jardin>a {font-size:14pt; color: #382929}
+.GNB_jardin>ul {margin-left: 165px;}
+.GNB_jardin{z-index:5;list-style:none;margin-right:65px;height:30px}
+.GNB_jardin:hover #jardin{animation:jardin_1 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes jardin_1{100% {width:460px}100%{margin-left:-5px }}
+.GNB_jardin>a:hover{color:#0e3889;text-shadow:2px 2px lightgray}
+.GNB_jardin:hover>#jardin li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_jardin ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
+.GNB_jardin ul{width:0px;height:40px;border-radius:50px;background-color:#0e3889;position:absolute;left:-130px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_jardin li{margin:0px 20px;}
+.GNB_jardin li a{color:transparent}
+.GNB_comida>a {font-size:14pt; color: #382929}
+.GNB_comida>ul{margin-left:145px;}
+.GNB_comida{z-index:6;list-style:none;margin-right:70px;height:30px}
+.GNB_comida:hover #comida{animation:comida_1 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes comida_1{100% {width:470px}100%{margin-left:-165px}}
+.GNB_comida>a:hover{color:#1d065a;text-shadow:2px 2px lightgray}
+.GNB_comida:hover>#comida li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_comida ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
+.GNB_comida ul{width:0px;height:40px;border-radius:50px;background-color:#1d065a;position:absolute;left:-90px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_comida li{margin:0px 20px;}
+.GNB_comida li a{color:transparent}
+.GNB_plaza>a {font-size:14pt; color: #382929}
+.GNB_plaza>ul{margin-left:145px;}
+.GNB_plaza{z-index:7;list-style:none;height:30px}
+.GNB_plaza:hover #plaza{animation:plaza_1 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes plaza_1{100% {width:392px}100%{margin-left:-195px}}
+.GNB_plaza>a:hover{color:#a30768;text-shadow:2px 2px lightgray}
+.GNB_plaza:hover>#plaza li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
+.GNB_plaza ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
+.GNB_plaza ul{width:0px;height:40px;border-radius:50px;background-color:#a30768;position:absolute;left:-130px;padding:8px 0px 4px 10px;margin-top:5px;box-sizing:border-box;visibility:hidden}
+.GNB_plaza li{margin:0px 20px;}
+.GNB_plaza li a{color:transparent}
+@keyframes intro1 {100% {color:white}}
+.top_wrap{width:100%;position:absolute;top:0px;border-bottom:1px solid #f1f1f1}
+.top_menu{width:1200px; height:25px;margin:auto;}
+.topmenu_title{position:absolute;left:-9999px;top:-9999px}
+.top_menu ul {list-style:none;float:right;margin-right:34px }
+.top_menu ul li{float:left;margin:0px 16px}
+.day_n_night{padding-right:5px;}
+.day_n_night .day{width:23px; position:absolute;background: url(../images/btn_daymode.png)center no-repeat;text-indent:-9999px}
+.day_n_night .night{width:23px; position:absolute;background: url(../images/btn_nightmode.png)center no-repeat;text-indent:-9999px;z-index:-3 }
+.day_n_night .day:active,.day_n_night .day:focus{top:-40px}
+
+#sub1{width: 100%; height:3730px;background:url(../images/sub_bg1.png) center top no-repeat}
+.bg_fake{width: 100%; height:3730px;background:url(../images/fake.png) center top no-repeat;}
+main .main_wrap{width: 1200px; margin: 0 auto;}
+main .title_img{width: 100%; height: 440px; background:url(../images/sub1_title.png) center; margin: auto;}
+main .title_img1{width: 100%; height: 440px; background-color: transparent}
+main .title{font-family:"SeoulNamsanM","sans-serif";font-size:36pt;width: 100%; height:152px; background-color: aqua;text-align: center;}
+
+
+.shortcut{width: 1200px;overflow: hidden;margin:auto;background-color:bisque;}
+.shortcut h2{position: absolute;top:-9999px;left:-9999px}
+.shortcut ul li{float:left;background-color:fuchsia}
+.shortcut ul a{text-align: center}
+
+/*서브 페이지1 바로가기 메뉴 간격*/
+.shortcut1{margin:0 50px 0 200px;}
+.shortcut2,.shortcut3{margin:0 50px 0 150px}
+.shortcut4{margin:0 100px 0 150px}
+/*서브 페이지2 바로가기 메뉴 간격*/
+.shortcuta{margin:0 100px 0 150px;}
+.shortcutb,.shortcutc{margin:0 50px 0 100px}
+.shortcutd{margin:0 100px 0 100px}
+
+
+
+
+.footer{text-align: center; position:relative; background:url(../images/footer_bg.png) no-repeat center top}
+.footer .logo{width:80px;height:60px;margin:auto;font-family:"SeoulNamsanM","sans-serif";font-size:20pt;line-height:30px;background:url(../images/logo.png) no-repeat;padding-left:60px}
+.footer .logo a{color:#3d3724;display:block;position:relative;text-align:right;left:-58px;width:130px;height:60px}
+.SNS{width:1200px;padding-top:90px;margin:auto;overflow:hidden;box-sizing: border-box}
+.SNS h2{position:absolute;top:-9999px;left:-9999px}
+.SNS .sns_icon_wrap{width:642px;overflow:hidden;margin:0 auto 80px}
+.SNS ul li{width:52px;height:50px;float:left;margin: auto}
+.SNS a{display:block;position:absolute;width:52px;height:50px;}
+.SNS .kakao{background:url(../images/sns_kakao.png)no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .twitter{background:url(../images/sns_twitter.png) no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .youtube{background:url(../images/sns_youtube.png) no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .facebook{background:url(../images/sns_facebook.png) no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .instagram{background:url(../images/sns_instagram.png) no-repeat center;text-indent:-9999px;margin-right:66px}
+.SNS .line{background:url(../images/sns_line.png) no-repeat center;text-indent:-9999px;}
+.footer_info{width:1200px;margin:40px auto}
+.footer_info h2{position:absolute;top:-9999px;left:-9999px}
+.footer_info .wrap{width:642px;margin:auto;}
+.footer_law {float: left; overflow: hidden; margin: auto}
+.footer_law li {float: left; margin:0 5px 0 40px;}
+.site_link{float:left;margin-left:10px}
+.site_link .arrow{display: block; background:url(../images/arrow_footer.png)no-repeat 130px}
+.site_link h3{font-weight:normal;font-size:1em; position:relative;z-index:21;}
+.site_link ul{position:relative;z-index:20;top:-170px;line-height:30px;padding:10px;border:2px inset #3ae9c6;background-color:rgba(23,225,212,0.1)}
+.site_link li{background-color:rgba(255,255,255,0.9);border-bottom:1px dotted #3ae9c6;font-size:16px}
+.address {clear:both; position: relative;top:-80px;margin-bottom:-60px}
+.address h2{position:absolute;top:-9999px;left:-9999px}
+.law_n_order{width:1200px;margin:auto;overflow:hidden}
+.law_n_order h2{position:absolute;top:-9999px;left:-9999px}

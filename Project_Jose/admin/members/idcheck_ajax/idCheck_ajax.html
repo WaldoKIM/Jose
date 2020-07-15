@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>아이디 중복확인</title>
+<style type="text/css">
+.redText{color:red}
+.blueText{color:blue}
+</style>
+<script type="text/javascript">
+function getCont( id ){
+    
+    var xmlhttp = fncGetXMLHttpRequest();
+
+    // 아이디를 체크할 php 페이지에 체크 하려하는 id 값을 파라미터로 전송
+    xmlhttp.open('GET', 'id_check_ajax.php?uid='+id, false);
+
+    xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=UTF-8');
+
+    xmlhttp.onreadystatechange = function (){
+        if( xmlhttp.readyState=='4' && xmlhttp.status==200 ){
+            if( xmlhttp.status==500 || xmlhttp.status==404 || xmlhttp.status==403 )
+                alert( xmlhttp.status );
+            else{
+                // id_check_url.php 페이지에서 넘겨온 문자를 확인 하기 위하여 알림창으로 출력
+                // 차후 주석 처리 하면 되는 부분이며 페이지에서 넘어오는 값중 개행값이 없도록 처리
+				var txt = xmlhttp.responseText;
+				txt = txt.replace(/\n/g, "");//행바꿈제거
+				txt = txt.replace(/\r/g, "");//엔터제거
+				txt = txt.replace(/\s+/, "");//왼쪽 공백제거
+				txt = txt.replace(/\s+$/g, "");//오른쪽 공백제거
+                // alert('id_check_ajax.php 페이지에서 반환된 값 : '+txt+'\r필드에서 입력 받은 값 : ' + id);
+
+				var dp  = document.getElementById('rst');
+
+                if(txt=='Y') {
+                    dp.innerHTML = '이미 가입된 아이디입니다.';
+                    dp.className = 'redText';
+                } else{
+                    dp.innerHTML = '사용할 수 있는 아이디입니다.';
+                    dp.className = 'blueText';
+                }
+                
+            }
+        }
+    }
+    xmlhttp.send();
+}
+
+function fncGetXMLHttpRequest(){
+    if (window.ActiveXObject){
+        try{
+            return new ActiveXObject("Msxml2.XMLHTTP");
+        }
+        catch(e){
+            try{
+                return new ActiveXObject("Microsoft.XMLHTTP");
+            } 
+		catch(e1) { return null; }
+        }
+        //IE 외 파이어폭스 오페라 같은 브라우저에서 XMLHttpRequest 객체 구하기
+    } else if (window.XMLHttpRequest){
+        return new XMLHttpRequest();
+    } else{
+        return null;
+    }
+}
+</script>
+</head>
+
+<body>
+
+<form name='frm'>
+  <input type='text' name='id' onkeyup='getCont(this.value);'>
+  <input type='button' name='btn' value='아이디체크'>
+  <div id='rst'></div>
+</form>
+</body>
+</html>
