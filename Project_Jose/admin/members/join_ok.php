@@ -6,7 +6,7 @@
 
 $uname = $_POST["uname"];
 $uid = $_POST["uid"];
-$pwd = $_POST["pwd"];
+$pwd = password_hash($_POST['usnp'], PASSWORD_BCRYPT);
 $email_id = $_POST["email_id"];
 $email_dns = $_POST["email_dns"];
 $email = $email_id."@".$email_dns;

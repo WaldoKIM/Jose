@@ -36,7 +36,10 @@ if($uid  != $array["uid"]){ // 아이디가 존재하지 않는다면
     return false;
 } else{ // 아이디가 존재한다면
     // 비밀번호 검사
-    if($pwd  != $array["usnp"]){
+//DB에서 암호화된 비밀번호 불러오기    
+    $db_pwd = $array["usnp"];
+//사용자가 입력한 비빌번호를 암호화하여 일치여부 확인    
+    if(!password_verify($pwd,$db_pwd)){
         echo "
             <script type='text/javascript'>
                 alert(\"비밀번호가 일치하지 않습니다.\");
@@ -54,7 +57,7 @@ if($uid  != $array["uid"]){ // 아이디가 존재하지 않는다면
         ";
         return false;
     }
-    }
+    } 
 };
 
 
@@ -68,7 +71,7 @@ if ($_SESSION['uid'] == 'rootkim@admin.com'){
     echo "
     <script type='text/javascript'>
         alert('welcomeback, commander!');
-        location.href='../index.php';
+        location.href='../login_index.php';
     </script>
 ";
     
@@ -77,7 +80,7 @@ if ($_SESSION['uid'] == 'rootkim@admin.com'){
 echo "
     <script type='text/javascript'>
         alert('로그인 되었습니다.');
-        location.href='../index.php';
+        window.history.go(-2);
     </script>
 ";
 };

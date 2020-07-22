@@ -38,8 +38,11 @@
         <?php
             echo "<h2>'Welcome Back, Commander!'</h2>";
             echo "<a href=\"#none\" onclick=\"logout_check()\">로그아웃</a> ";
-            echo "<a href=\"members/list.php\">회원정보수정</a>";
-            
+            echo "<a href=\"members/list.php\">회원정보수정</a> ";
+            echo "<a href=\"../board_admin.php\">게시판</a> ";
+            echo "<a href=\"../board_notice.php\">공지사항</a> ";
+            echo "<a href=\"../board_secret.php\">비밀글 확인</a> ";
+            echo "<a href=\"../index.php\">메인화면</a>";
         ?>
         <a href="#">사이트맵</a>
     </p>

@@ -8,7 +8,7 @@ $s_idx = isset($_SESSION["unumero"])? $_SESSION["unumero"]:"";
 // form method "post" : $_POST["데이터 입력 받을 필드의 name 값"];
 // form method "get" : $_GET["데이터 입력 받을 필드의 name 값"];
 $uname = $_POST["unombre"];
-$pwd = $_POST["usnp"];
+$pwd = password_hash($_POST['usnp'], PASSWORD_BCRYPT);
 $mobile = $_POST["utelefono"];
 $news = $_POST["unews"];
 

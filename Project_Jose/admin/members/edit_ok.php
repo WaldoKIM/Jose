@@ -16,7 +16,7 @@ include "../../inc/dbcon.php";
 // 데이터 가져오기
 $s_idx = $_POST["unumero"]; 
 $uname = $_POST["unombre"];
-$pwd = $_POST["usnp"];
+$pwd = password_hash($_POST['usnp'], PASSWORD_BCRYPT);
 $mobile = $_POST["utelefono"];
     
 

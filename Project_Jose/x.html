@@ -1,13 +1,3 @@
-<?php 
-    session_start();
-    $s_id = isset($_SESSION["uid"])? $_SESSION["uid"] : "";
-    $s_name = isset($_SESSION["unombre"])? $_SESSION["unombre"] : "";
-    $s_idx = isset($_SESSION["unumero"])? $_SESSION["unumero"]:"";
-
-
-    // 로그인 정보 확인
-    // echo $_SESSION["uid"]."/".$_SESSION["uname"];
-?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -54,7 +44,7 @@ wrap_ani.animationName = "mymy";
 </div>
     <div class="header">
     <div class="GNB">
-    <h1 class="logo"><a href="index.php">중남미<br/>문화원</a></h1>
+    <h1 class="logo"><a href="index.html">중남미<br/>문화원</a></h1>
     <h2 class="GNB_title">전체 메뉴</h2>
       <div class="GNB_position">
       <ul>
@@ -120,18 +110,7 @@ wrap_ani.animationName = "mymy";
     <h2 class="topmenu_title">사이트 메뉴</h2>
       <ul>
           <li><a href="">사이트맵</a></li>
-          <?php
-            if(!$s_id){
-                echo "<li><a href='login_index.php'>로그인</a></li>";
-                } else if($_SESSION['uid'] == 'rootkim@admin.com' && $s_idx == 1){
-                echo "<li><a href='admin/admin.php'><b>관리자모드</b></a></li>";
-                echo "<li><a href='login/logout.php'>로그아웃</a></li>";      
-            } else{
-                echo "<li><a href='login/logout.php'>로그아웃</a></li>";
-                echo "<li><a href='login_index.php'>계정정보</a></li>";
-            }
-        ?>
-
+       <li><a href="login_index.php">로그인</a></li>
        <li><a href="">ENG</a></li>
        <li class="day_n_night">
        <a class="day" href="Night">Day mode</a>
@@ -289,8 +268,8 @@ wrap_ani.animationName = "mymy";
           <a class="circle" href="/news3.html"></a>
           <a class="title" href="/news3.html">설립자 소개</a></li>
       <li class="circle4">
-          <a class="circle" href="board_index.php"></a>
-          <a class="title" href="board_index.php">게시판</a></li>
+          <a class="circle" href="/news4.html"></a>
+          <a class="title" href="/news4.html">게시판</a></li>
       <li class="circle5">
           <a class="circle" href="/news5.html"></a>
           <a class="title" href="/news5.html">관람문의</a></li>
