@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: text/html; charset=UTF-8');
 // 데이터 가져오기
 $sch_id = $_POST["sch_id"];
 

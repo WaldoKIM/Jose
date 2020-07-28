@@ -16,7 +16,7 @@
     // mysqli_num_rows : 행 개수
     $num = mysqli_num_rows($result);
 
-if($s_id != "rootkim@admin.com" && $idx != 1){
+if($s_id != "intkim777@gmail.com" && $idx != 1){
 
 return false;    
 }

@@ -7,16 +7,59 @@
 
     // 로그인 정보 확인
     // echo $_SESSION["uid"]."/".$_SESSION["uname"];
-?>
+include "inc/dbcon.php"; ?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+       <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+       <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" type="text/css" href="index.css"/>
          <link href="bxslider-4-4.2.12/src/css/jquery.bxslider.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
 <script src="bxslider-4-4.2.12/src/js/jquery.bxslider.js"></script>
+<script>
+    function parseWeather() 
+    { 
+  loadJSON(function(response) 
+  {
+  var jsonData = JSON.parse(response);
+      var cur_temp = jsonData.main.temp - 273.15
+               document.getElementById("todaysWeather").innerHTML = //jsonData.weather[0].main;
+               Math.round(cur_temp) + '&#176C' + '&#32;&#124;&#32;' + jsonData.weather[0].main
+               ;    
+            });
+            }
+        function loadJSON(callback) //url의 json 데이터 불러오는 함수
+           {   
+              var url = "http://api.openweathermap.org/data/2.5/weather?q=goyang,kr&appid=049198b75991575f3b0099bc976fc597";
+
+              var request = new XMLHttpRequest();
+
+              request.overrideMimeType("application/json");
+
+              request.open('GET', url, true);
+
+              request.onreadystatechange = function () 
+              {
+
+                if (request.readyState == 4 && request.status == "200") 
+                {
+
+                  callback(request.responseText);
+                }
+              };
+
+              request.send(null);  
+          } 
+
+          window.onload = function()
+          {
+            parseWeather();
+          }
+
+    </script>
 <script>
 $(function(){
     $('.slider').bxSlider({
@@ -123,7 +166,7 @@ wrap_ani.animationName = "mymy";
           <?php
             if(!$s_id){
                 echo "<li><a href='login_index.php'>로그인</a></li>";
-                } else if($_SESSION['uid'] == 'rootkim@admin.com' && $s_idx == 1){
+                } else if($_SESSION['uid'] == 'intkim777@gmail.com' && $s_idx == 1){
                 echo "<li><a href='admin/admin.php'><b>관리자모드</b></a></li>";
                 echo "<li><a href='login/logout.php'>로그아웃</a></li>";      
             } else{
@@ -140,7 +183,8 @@ wrap_ani.animationName = "mymy";
        <label for="nightmode">
 			<input type="checkbox" name="nightmode" id="nightmode">
 			<span class="check"></span>
-		</label> 
+		</label>
+       <span id ="todaysWeather" class="weather"></span>
        </div>
    </div>
 	
@@ -262,13 +306,23 @@ wrap_ani.animationName = "mymy";
     </div>
     
     <div class="notice">    
+    
+    
     <h2>&#124; 공지사항</h2>
-    <ul>
+    <div>
+    <iframe class="notice_iframe" src="board_notices.php" title="공지사항"></iframe>
+    </div>
+      
+      
+      
+      
+      
+       <!--<ul>
         <li><a href="">신종 코로나 바이러스 관련 문화원 개장 안내</a> <span class="date">2020-03-03</span></li>
         <li><a href="">문화원 내 빠예야 레스토랑 영업 중단 안내</a> <span class="date">2020-03-03</span></li>
         <li><a href="">문화가 있는 날 이용료 할인에 대한 안내</a> <span class="date">2020-03-03</span></li>
         <li><a href="">문화원 야간개장 이벤트-쿠바 재즈의 밤 행사 공지</a> <span class="date">2020-03-03</span></li>
-    </ul>
+    </ul> -->
     <a href="/notice.html">더보기</a>
   </div>
   

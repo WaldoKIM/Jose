@@ -1,5 +1,6 @@
 <?php
     session_start();
+header('Content-Type: text/html; charset=UTF-8');
 
     // 세션 삭제 : unset(세션변수);
     unset($_SESSION["uid"]);

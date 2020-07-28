@@ -1,14 +1,14 @@
-<?php include "db.php";
-    session_start();
+<?php include "inc/dbcon.php";
+           session_start();
     $s_id = isset($_SESSION["uid"])? $_SESSION["uid"] : "";
     $s_name = isset($_SESSION["unombre"])? $_SESSION["unombre"] : "";
     $s_idx = isset($_SESSION["unumero"])? $_SESSION["unumero"] : "";
 
  
-    if($s_id!='rootkim@admin.com' && $s_idx!=1){
+    if($s_id!='intkim777@gmail.com' && $s_idx!=1){
         echo "<script>
          alert('Warning! Access denied, You don\'t have permission to access on The Command Centre.');
-        location.href='../index.php';
+        location.href='index.php';
         </script>";
     }; ?>
 <!doctype html>
@@ -51,8 +51,11 @@
             }else{
               $page = 1;
             }
-              $sql = mq("select * from plaza_tablero");
-              $row_num = mysqli_num_rows($sql); //게시판 총 레코드 수
+              $sql = "select * from plaza_tablero";
+        
+              $result = mysqli_query($con, $sql);
+            
+              $row_num = mysqli_num_rows($result); //게시판 총 레코드 수
               $list = 5; //한 페이지에 보여줄 개수
               $block_ct = 5; //블록당 보여줄 페이지 개수
 
@@ -65,9 +68,11 @@
               $total_block = ceil($total_page/$block_ct); //블럭 총 개수
               $start_num = ($page-1) * $list; //시작번호 (page-1)에서 $list를 곱한다.
 
-              $sql2 = mq("select * from plaza_tablero order by tidx desc limit $start_num, $list");  
-                
-              while($board = $sql2->fetch_array()){
+              $sql2 = "select * from plaza_tablero order by tidx desc limit $start_num, $list";  
+            
+              $result2 = mysqli_query($con, $sql2);     
+        
+              while($board = mysqli_fetch_array($result2)){
               $title=$board["ttitle"]; 
                 if(strlen($title)>30)
                 { 

@@ -1,8 +1,8 @@
   <?php
   $uid = $_GET['uid'];
   
-  $connect = mysqli_connect("localhost","root","");
-  $db_con = mysqli_select_db($connect, "testdb");
+  $connect = mysqli_connect("localhost","morpheus","glaTprhrkdgksdkcla!2");
+  $db_con = mysqli_select_db($connect, "morpheus");
  
   $sql="select * from members where uid='$uid'";
   $result=mysqli_query($connect, $sql);

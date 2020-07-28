@@ -10,7 +10,7 @@
 include "../inc/sess.php";
 include "../../inc/dbcon.php";
 
-if($s_id != "rootkim@admin.com" && $idx != 1){
+if($s_id != "intkim777@gmail.com" && $idx != 1){
 
 return false;    
 }

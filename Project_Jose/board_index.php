@@ -1,15 +1,18 @@
-<?php include "db.php"; ?>
+<?php include "inc/dbcon.php"; ?>
 <!doctype html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <style>.notice {width:1000px;border:none} 
+        li {list-style: none; float: left; margin-left: 10px;}</style>
 </head>
 <body>
 <div id="board_area"> 
   <h1>자유게시판</h1>
   <h4>자유롭게 글을 쓸 수 있는 게시판입니다.</h4>
+<iframe class="notice" src="board_notices.php" title="공지사항"></iframe>
     <table class="list-table">
       <thead>
           <tr>
@@ -38,8 +41,12 @@
             }else{
               $page = 1;
             }
-              $sql = mq("select * from plaza_tablero");
-              $row_num = mysqli_num_rows($sql); //게시판 총 레코드 수
+              $sql = "select * from plaza_tablero";
+        
+              $result = mysqli_query($con, $sql);
+            
+              $row_num = mysqli_num_rows($result); //게시판 총 레코드 수
+        
               $list = 5; //한 페이지에 보여줄 개수
               $block_ct = 5; //블록당 보여줄 페이지 개수
 
@@ -52,11 +59,13 @@
               $total_block = ceil($total_page/$block_ct); //블럭 총 개수
               $start_num = ($page-1) * $list; //시작번호 (page-1)에서 $list를 곱한다.
 
-              $sql2 = mq("select * from plaza_tablero order by tidx desc limit $start_num, $list");  
-                
-              while($board = $sql2->fetch_array()){
+              $sql2 = "select * from plaza_tablero order by tidx desc limit $start_num, $list";  
+            
+              $result2 = mysqli_query($con, $sql2);     
+        
+              while($board = mysqli_fetch_array($result2)){
               $title=$board["ttitle"]; 
-                if(strlen($title)>30)
+                if(strlen($title)>50)
                 { 
                   $title=str_replace($board["ttitle"],mb_substr($board["ttitle"],0,30,"utf-8")."...",$board["ttitle"]);
                 }
@@ -66,10 +75,7 @@
               ?>
             
                     
-             <div>
-            <?php if($board['tatencion']=="1"){ ?>  <a href='page/board/read.php?tidx=<?php echo $board["tidx"]; ?>'><?php echo '<b>&#91;공지사항&#93;&nbsp;'.$title.'</b></a>'; } ?>     
-             </div>
-                   
+           
         
         
         

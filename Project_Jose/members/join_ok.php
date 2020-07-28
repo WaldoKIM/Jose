@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: text/html; charset=UTF-8');
 //// 데이터 가져오기
 // form method "post" : $_POST["데이터 입력 받을 필드의 name 값"];
 // form method "get" : $_GET["데이터 입력 받을 필드의 name 값"];
@@ -20,14 +20,14 @@ $reg_date = date("Y-m-d H:i:s");
 // return false;
 
 // 데이터 확인
-/*
+
 echo "<p>이름 : ".$uname."</p>";
 echo "<p>아이디 : ".$uid."</p>";
 echo "<p>비밀번호 : ".$pwd."</p>";
 echo "<p>이메일 : ".$email."</p>";
 echo "<p>전화번호 : ".$mobile."</p>";
 echo "<p>약관 동의 : ".$apply."</p>";
-*/
+
 
 
 //// DB 연결
@@ -35,10 +35,8 @@ include "../inc/dbcon.php";
 
 // 쿼리 작성
 // $sql = "insert into members(uname, uid, pwd, email, mobile, apply) values('$uname', '$uid', '$pwd', '$email', '$mobile', '$apply');";
-$sql = "insert into miembros(unombre, uid, usnp, utelefono, unews, yonosoyunrobot, ureg_fetcha) values('$uname', '$uid', '$pwd', '$mobile', '$news', '$iamnotarobot', '$reg_date');";
+$sql = "insert into miembros(unombre, uid, usnp, utelefono, unews, ureg_fetcha) values('$uname', '$uid', '$pwd', '$mobile', '$news', '$reg_date');";
 
-// echo $sql;
-// return false;
 
 /*
 $sql = "insert into members(";
@@ -51,10 +49,11 @@ $sql .= ");";
 // $sql = "insert into members(uname, uid, pwd, email, mobile, apply) values(    '".$uname."', '".$uid."', '".$pwd."', '".$email."', '".$mobile."', '".$apply."');";
 
 // echo $sql;
-
-//// 쿼리 전송
 mysqli_query($con, $sql);
+//// 쿼리 전송
 
+
+include "../inc/dbcon.php";
 
 	$email_id=$_POST['uid'];
 	$code=substr(md5(mt_rand()),0,15);
@@ -68,6 +67,7 @@ mysqli_query($con, $sql);
 $idx = mysqli_query($con, $select);    
 $array = mysqli_fetch_array($idx);
 $userid = $array["unumero"];
+
 echo $userid;
 
 
@@ -76,19 +76,21 @@ echo $userid;
     $to=$email_id;
     $subject="Activation Code For Talkerscode.com";
     $from = 'intkim777@gmail.com';
-    $link = 'Verification.php';
-    $usid = "$userid";
-    $uscode = "'$code'";
+    $link = 'verification.php';
+    $usid = $userid;
+    $uscode = $code;
 
         
-    $body='Your Activation Code is '.$code.' Please Click On This link <a href='.$link.'?uid='.$usid.'&code='.$uscode.'>YES PLEASE!!!</a>to activate your account.';
+    $body='Your Activation Code is '.$code.' Please Click On This link <a href='.$link.'?uid='.$usid.'&&code='.$uscode.'>YES PLEASE!!!</a>to activate your account.';
     $headers = "From:".$from;
     mail($to,$subject,$body,$headers);
-	echo $body;
+	
+   echo $usid;
+    echo $body;
     echo "An Activation Code Is Sent To You Check You Emails";
+    echo $to;
 
-
-
+mysqli_query($con, $sql);
 
 
 

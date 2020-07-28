@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', '0');
-
+header('Content-Type: text/html; charset=UTF-8');
 //세션 값 처리
 //$s_id = isset($_SESSION["uid"])? $_SESSION["uid"]:"";
 session_start();
@@ -27,7 +27,7 @@ document.write('<p>','Ah ah ah! You didn\'t say The Magic Word!',
 </script>";
 return false;    
 }
- include "../../db.php"; 
+ 
 
 include "../../inc/dbcon.php";
 
@@ -84,7 +84,7 @@ $check2 = $array["unumero"];
     $s_id = isset($_SESSION["uid"])? $_SESSION["uid"] : "";
     $s_name = isset($_SESSION["unombre"])? $_SESSION["unombre"] : "";
     $s_idx = isset($_SESSION["unumero"])? $_SESSION["unumero"]:"";
-    if($_SESSION['uid'] == 'rootkim@admin.com' && $s_idx == 1){
+    if($_SESSION['uid'] == 'intkim777@gmail.com' && $s_idx == 1){
                 echo "<input type='checkbox' value='1' name='tatencion'/><b>공지사항</b>";} ?>
                   <div id="in_pw">
                         <input type="text" name="unumero" id="unumero"  value="<?php echo $check2?>" required />  

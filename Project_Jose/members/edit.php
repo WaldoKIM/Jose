@@ -2,7 +2,9 @@
 //세션 활성화
 //php 오류 메세지 숨기기
 ini_set('display_errors', '0');
+header('Content-Type: text/html; charset=UTF-8');
 session_start();
+
 
 //세션 값 처리
 //$s_id = isset($_SESSION["uid"])? $_SESSION["uid"]:"";

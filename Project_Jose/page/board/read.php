@@ -1,12 +1,16 @@
 <?php 
+header('Content-Type: text/html; charset=UTF-8');
 ini_set('display_errors', '0');
-include "../../db.php";  /* db load */
+include "../../inc/dbcon.php";  /* db load */
 $bno = $_GET['tidx'];
-$sqlz = mq("select * from plaza_tablero where tidx ='".$bno."'");
-$num = mysqli_num_rows($sqlz);
+$sqlz = "select * from plaza_tablero where tidx ='".$bno."'";
+$resultz = mysqli_query($con, $sqlz); 
+$num = mysqli_num_rows($resultz);
 /*받아온 idx값을 선택 */
-$boardz = $sqlz->fetch_array();
+
+$boardz = mysqli_fetch_array($resultz);
 $cck = $boardz['tsecret'];
+$cck2 = $boardz['unumero'];
 if($num==0 || $num==null){
 echo "<script type='text/javascript'>
 alert(\"잘못된 접근입니다.\");
@@ -36,9 +40,41 @@ document.write('<p>','Ah ah ah! You didn\'t say The Magic Word!',
 </script>";
 return false;    
     }
+
+
+$sql="select * from miembros where unumero = $s_idx;";
+
+$result = mysqli_query($con, $sql);
+
+$array = mysqli_fetch_array($result); 
+
+
+
+$lock = $array["unumero"];
+
+
+if($lock==1){
+    
+}else{
+    echo "<script type='text/javascript'>
+        alert(\"비밀글은 작성자와 운영자만 열람 가능합니다.\");
+        history.go(-1);
+        </script>";
+
+return false;    
+}
+    
 };
 
+
 ?>
+
+
+
+
+
+
+
 
 <!doctype html>
 <html lang="ko">
@@ -51,11 +87,18 @@ return false;
 <body>
 	<?php
 		$bno = $_GET['tidx']; /* bno함수에 idx값을 받아와 넣음*/
-		$hit = mysqli_fetch_array(mq("select * from plaza_tablero where tidx ='".$bno."'"));
+        $sqlh = "select * from plaza_tablero where tidx ='".$bno."'"; 
+        $resulth = mysqli_query($con, $sqlh);
+		$hit = mysqli_fetch_array($resulth);
 		$hit = $hit['thit'] + 1;
-		$fet = mq("update plaza_tablero set thit = '".$hit."' where tidx = '".$bno."'");
-		$sql = mq("select * from plaza_tablero where tidx='".$bno."'"); /* 받아온 idx값을 선택 */
-		$board = $sql->fetch_array();
+    
+        $sqlf = "update plaza_tablero set thit = '".$hit."' where tidx = '".$bno."'";
+        $resultf = mysqli_query($con, $sqlf);
+        
+		$sql1 = "select * from plaza_tablero where tidx='".$bno."'"; /* 받아온 idx값을 선택 */
+        $result1 = mysqli_query($con, $sql1); 
+    
+		$board = mysqli_fetch_array($result1);
 	?>
 <!-- 글 불러오기 -->
 <div id="board_read">
@@ -78,3 +121,4 @@ return false;
 </div>
 </body>
 </html>
+<?php mysqli_close($con); ?>

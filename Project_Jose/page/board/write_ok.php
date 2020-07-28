@@ -1,5 +1,5 @@
-<?php include "../../db.php"; 
-
+<?php include "../../inc/dbcon.php"; 
+header('Content-Type: text/html; charset=UTF-8');
 //각 변수에 write.php에서 input name값들을 저장한다
 $username = $_POST['unombre'];
 $useridx = $_POST['unumero'];
@@ -9,15 +9,17 @@ $content = $_POST['tcontent'];
 $date = date("Y-m-d H:i:s");
 $tsecret = $_POST['tsecret'];
 $tnotice = $_POST['tatencion'];
-echo $tnotice;
-if($username && $title && $content){
-    $sql = mq("insert into plaza_tablero(unombre,unumero,ttitle,tcontent,tdate,tsecret,tatencion) values('".$username."','".$useridx."','".addslashes($title)."','".addslashes($content)."','".$date."','$tsecret','$tnotice')"); 
+if($tsecret == null){$tsecret = 0;};
+if($tnotice == null){$tnotice = 0;};
+
+
+
+    $sql = "insert into plaza_tablero(unumero,unombre,ttitle,tcontent,tdate,tsecret,tatencion) values($useridx,'$username','".addslashes($title)."','".addslashes($content)."','$date',$tsecret,$tnotice);";
+
+
+    mysqli_query($con, $sql); 
+
     echo "<script>
     alert('글쓰기 완료되었습니다.');
     location.href='../../board_index.php';</script>";
-}else{
-    echo "<script>
-    alert('글쓰기에 실패했습니다.');
-    history.back();</script>";
-}
 ?>

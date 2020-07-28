@@ -1,8 +1,8 @@
   <?php
   $uid = $_GET['uid'];
   
-  $connect = mysqli_connect("localhost","comosellama","llama");
-  $db_con = mysqli_select_db($connect, "latina");
+  $connect = mysqli_connect("localhost","morpheus","glatprhrkdgksdkcla!2");
+  $db_con = mysqli_select_db($connect, "morpheus");
 //include "../inc/dbcon.php"; 
 
   $sql="select * from miembros where uid='$uid'";
@@ -14,8 +14,8 @@ if(isset($_GET['uid']))
 {
 	$email_id=$_GET['uid'];
 	$code=substr(md5(mt_rand()),0,15);
-	mysql_connect('localhost','comosellama','llama');
-	$db_con = mysqli_select_db($connect, "latina");
+	mysql_connect('localhost','morpheus','glaTprhrkdgksdkcla!2');
+	$db_con = mysqli_select_db($connect, "morpheus");
     //mysql_select_db('sample');
 	
 	$insert=mysql_query("insert into verify values('','$email','$pass','$code')");

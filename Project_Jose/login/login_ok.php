@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+header('Content-Type: text/html; charset=UTF-8');
 // 이전 페이지에서 데이터 가져오기
 $uid = $_POST["uid"];
 $pwd = $_POST["usnp"];

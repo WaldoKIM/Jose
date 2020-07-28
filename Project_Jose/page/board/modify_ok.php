@@ -1,5 +1,5 @@
 <?php include "../../db.php";
-
+header('Content-Type: text/html; charset=UTF-8');
 $bno = $_POST['tidx'];
 $username = $_POST['unombre'];
 $title = $_POST['ttitle'];

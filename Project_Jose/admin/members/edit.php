@@ -5,7 +5,7 @@ session_start();
 $s_id = isset($_SESSION["uid"])? $_SESSION["uid"] : "";
 $idx = isset($_SESSION["unumero"])? $_SESSION["unumero"] : "";
 
-if($s_id != "rootkim@admin.com" && $idx != 1){
+if($s_id != "intkim777@gmail.com" && $idx != 1){
     echo "<div class='x'></div>";
     echo "<script type='text/javascript'>
     var img = document.createElement('img');

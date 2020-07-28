@@ -13,7 +13,7 @@ address{font-style:normal}
 /* defalut font */
 
 /* day n knights of camellot */
-.top_menu label {background: blue;}
+.top_menu label {display: block; width:40px;}
 input[type="checkbox"]
 {-webkit-appearance: none;
 	display: none;
@@ -68,6 +68,10 @@ transform: translateX(50px);
 input[type="checkbox"]:checked ~ .check:after
 {transform: translateX(0px);
 }
+
+/* weather api */
+.weather{position: absolute;top:0px;left:310px;}
+
 
 
 /* skip menu */
@@ -281,7 +285,7 @@ body{min-width: 1200px;}
 .pause_n_play{clear:both;overflow:hidden;margin:20px 0 0 48px; }
 .pause_n_play .bx-stop{display:block;background:url(images/icon_pause.png)no-repeat;text-indent:-9999px;width:20px; float:left;margin-right:20px;height:26px}
 .pause_n_play .bx-start{display:block;background:url(images/icon_play.png)no-repeat;text-indent:-9999px;width:24px; float:left;height:26px} 
-.mid_bg{width:100%;position:; background:url(images/mid_bg0.png) no-repeat; background-position: center top}
+.mid_bg{width:100%;position:; background:url(images/mid_bg1.png) no-repeat; background-position: center top}
 .mid_content_wrap{width:1200px;margin:0 auto 60px}
 .index_booking{width:420px;position: relative;float:left;margin-top:-150px }
 .index_booking a{color:white}
@@ -297,6 +301,7 @@ body{min-width: 1200px;}
 .general_info .plus{position:absolute;top:162px;left: 220px}
 .plus::after{content:"+"}
 .notice{width:585px;height:250px; position:relative;top:300px;float:right;margin-right:10px;letter-spacing:normal}
+.notice_iframe{border: none; width: 595px;}
 .notice h2{color:#1a7360}
 .notice ul{margin-top:10px;line-height:30px}
 .notice li{padding-top:20px;border-bottom: 1px solid lightgray;color:#655e5e}
@@ -345,7 +350,7 @@ body{min-width: 1200px;}
 .circle5 .circle:hover{animation:circle_dnace5 0.3s 1;animation-fill-mode:forwards;}
 @keyframes circle_dnace5{100% {background:url(images/icon_circle5_hover.png)}100%{top:-15px}}
 .circle5 .title{display:block;width:160px;text-align:center;font-family:"SeoulNamsanM","sans-serif";font-size:16pt;font-weight:bold;color:#343123}
-.foundation{clear:both;position:relative;padding-bottom:85px;overflow:hidden}
+.foundation{clear:both;position:relative;padding-bottom:35px;overflow:hidden}
 .foundation .f_wrap{width:1200px;height:60px; margin:auto}
 .foundation h2{float:left;font-family:"SeoulNamsanM","sans-serif";font-size:30px;font-weight:bold;color:#343123}
 .foundation a{float:right;margin-top:10px;font-size:20px;text-decoration:underline}
@@ -355,7 +360,7 @@ body{min-width: 1200px;}
 .first_li {animation: bannermove 60s linear infinite; margin-left: -300px;}
 @keyframes bannermove { 0% {margin-left: 0px; }
  100% {margin-left: -3195px; }}
-.end_content_wrap{width:100%; background:url(images/bottom_bg.png) no-repeat; background-position: center;}
+.end_content_wrap{width:100%; background:url(images/bottom_bg1.png) no-repeat; background-position: center top;}
 .external_event{width:1200px;height:888px;margin:auto;padding-top:100px}
 .external_event h2{font-size:32pt;font-family:"SeoulNamsanM","sans-serif";text-align:center}
 .external_event dl{overflow: hidden;margin-bottom:100px; position:relative}

@@ -5,7 +5,7 @@
     $s_idx = isset($_SESSION["unumero"])? $_SESSION["unumero"] : "";
 
  
-    if($s_id!='rootkim@admin.com' && $s_idx!=1){
+    if($s_id!='intkim777@gmail.com' && $s_idx!=1){
         echo "<script>
          alert('Warning! Access denied, You don\'t have permission to access on The Command Centre.');
         location.href='../index.php';

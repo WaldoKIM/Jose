@@ -1,5 +1,6 @@
 <?php
 session_start();
+header('Content-Type: text/html; charset=UTF-8');
 
 // id 데이터 가져오기 - SESSION *_로 시작하는건 대문자로!*
 $s_idx = isset($_SESSION["unumero"])? $_SESSION["unumero"]:"";

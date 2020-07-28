@@ -1,6 +1,86 @@
-<?php include "db.php";
+<?php 
+ini_set('display_errors', '0');
+header('Content-Type: text/html; charset=UTF-8');
 $unumero = $_GET['tdx'];
+
+//오류 메세지 숨기기
+ini_set('display_errors', '0');
+//세션 활성화
+session_start();
+
+//
+//세션 값 처리
+//$s_id = isset($_SESSION["uid"])? $_SESSION["uid"]:"";
+$s_idx = isset($_SESSION["unumero"])? $_SESSION["unumero"]:"";
+//중복될수 있는 항목보단 절대 중복되지 않는 id(idx) 값이 더 유용하다
+
+//로그인 하지 않은 사용자 접근 시 페이지 변경
+if(!$_SESSION['unumero']){
+    echo "<dvi id='x'></div>";
+    echo "<script type='text/javascript'>
+    var img = document.createElement('img');
+    var src = document.getElementById('x');
+
+    var response = confirm(\"로그인이 필요한 페이지 입니다. 로그인 하시겠습니까?\");
+if ( response == true )
+{
+   location.href='login_index.php' 
+} else {
+img.src = 'https://i.imgur.com/GWVvTYM.gif';
+src.appendChild(img);
+document.write('<p>','Ah ah ah! You didn\'t say The Magic Word!',
+'</p>','<a href=\'javascript:history.go(-1)\'>돌아가기</a>');	
+}
+</script>";
+return false;    
+} else {
+
+
+include "inc/dbcon.php";
+
+$sql="select * from miembros where unumero = $s_idx;";
+
+$result = mysqli_query($con, $sql);
+
+$array = mysqli_fetch_array($result); 
+
+
+
+$lock = $array["unumero"];
+
+
+/* bno함수에 idx값을 받아와 넣음*/
+$sqlx = "select * from plaza_tablero where unumero= $unumero;"; /* 받아온 idx값을 선택 */
+
+$result2 = mysqli_query($con, $sqlx);    
+    
+    
+$board = mysqli_fetch_array($result2);
+    
+$pick = $board['unumero'];
+
+
+    
+};
+if($pick==null)
+{echo "<script type='text/javascript'>
+        alert(\"작성된 글이 없습니다.\");
+        </script>";
+return false; };
+//관리자 통과
+if($lock==1){?><script type="text/javascript">location.replace("read.php?tidx=<?php echo $unumero; ?>");</script><?php    
+}else if($lock!= $pick){
+    echo "<script type='text/javascript'>
+        alert(\"내 게시물 보기는 작성자와 운영자만 열람 가능합니다.\");
+        </script>";
+
+return false;    
+}
 ?>
+
+
+
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -40,8 +120,9 @@ $unumero = $_GET['tdx'];
             }else{
               $page = 1;
             }
-              $sql = mq("select * from plaza_tablero where unumero=$unumero");
-              $row_num = mysqli_num_rows($sql); //게시판 총 레코드 수
+              $sql1 = "select * from plaza_tablero where unumero=$unumero";
+              $result1 = mysqli_query($con, $sql1);
+              $row_num = mysqli_num_rows($result1); //게시판 총 레코드 수
               $list = 5; //한 페이지에 보여줄 개수
               $block_ct = 5; //블록당 보여줄 페이지 개수
 
@@ -54,10 +135,10 @@ $unumero = $_GET['tdx'];
               $total_block = ceil($total_page/$block_ct); //블럭 총 개수
               $start_num = ($page-1) * $list; //시작번호 (page-1)에서 $list를 곱한다.
 
-              $sql2 = mq("select * from plaza_tablero where unumero=$unumero order by tidx desc limit $start_num, $list");  
-                
-              while($board = $sql2->fetch_array()){
-              $title=$board["ttitle"]; 
+              $sql2 = "select * from plaza_tablero where unumero=$unumero order by tidx desc limit $start_num, $list";  
+              $result2 = mysqli_query($con, $sql2);   
+               while($board = mysqli_fetch_array($result2)){
+              $title=$board["ttitle"];  
                 if(strlen($title)>30)
                 { 
                   $title=str_replace($board["ttitle"],mb_substr($board["ttitle"],0,30,"utf-8")."...",$board["ttitle"]);
@@ -126,6 +207,8 @@ $unumero = $_GET['tdx'];
           }else{
             echo "<li><a href='?page=$total_page&tdx=$unumero'>마지막</a></li>"; //아니라면 마지막글자에 total_page를 링크한다.
           }
+          mysqli_close($con);    
+
         ?>
       </ul>
     </div>

@@ -103,7 +103,7 @@ $array = mysqli_fetch_array($result);
          
                 
                 
-                if($_SESSION['uid'] == 'rootkim@admin.com' && $s_idx == 1){
+                if($_SESSION['uid'] == 'intkim777@gmail.com' && $s_idx == 1){
                     echo "<script type='text/javascript'>
                    location.href='admin/admin.php'</script>";
                     //index 파일은 파일명이 없어도 기본으로 실행됨(파일명 생략가능)

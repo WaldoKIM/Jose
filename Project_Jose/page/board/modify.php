@@ -1,6 +1,6 @@
 <!--- 게시글 수정 -->
 <?php include "../../db.php";
-
+header('Content-Type: text/html; charset=UTF-8');
    
 	$bno = $_GET['tidx'];
 	$sql = mq("select * from plaza_tablero where tidx='$bno';");

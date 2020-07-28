@@ -7,7 +7,7 @@ include "../../inc/dbcon.php";
 //이전 페이지에서 값 가져오기
 $s_idx = $_GET["unumero"];
 
-if($s_id != "rootkim@admin.com" && $idx != 1){
+if($s_id != "intkim777@gmail.com" && $idx != 1){
 
 return false;    
 }

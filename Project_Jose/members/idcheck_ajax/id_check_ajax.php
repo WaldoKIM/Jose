@@ -1,8 +1,8 @@
   <?php
   $uid = $_GET['uid'];
   
-  $connect = mysqli_connect("localhost","comosellama","llama");
-  $db_con = mysqli_select_db($connect, "latina");
+  $connect = mysqli_connect("localhost","morpheus","glaTprhrkdgksdkcla!2");
+  $db_con = mysqli_select_db($connect, "morpheus");
 //include "../inc/dbcon.php"; 
 
   $sql="select * from miembros where uid='$uid'";

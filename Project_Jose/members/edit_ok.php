@@ -1,5 +1,6 @@
 <?php
 session_start();
+header('Content-Type: text/html; charset=UTF-8');
 
 
 $s_idx = isset($_SESSION["unumero"])? $_SESSION["unumero"]:"";

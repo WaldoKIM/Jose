@@ -1,5 +1,6 @@
 <?php
 //오류 메세지 숨기기
+header('Content-Type: text/html; charset=UTF-8');
 ini_set('display_errors', '0');
 //세션 활성화
 session_start();
@@ -40,7 +41,6 @@ $result = mysqli_query($con, $sql);
 
 $array = mysqli_fetch_array($result); 
 
-mysqli_close($con);
 
 $lock = $array["unumero"];
 
@@ -49,12 +49,11 @@ $lock = $array["unumero"];
 $bno = $_GET['tidx'];
 
 
-include "../../db.php";
-
 
 /* bno함수에 idx값을 받아와 넣음*/
-$sqlx = mq("select * from plaza_tablero where tidx='".$bno."'"); /* 받아온 idx값을 선택 */
-$board = $sqlx->fetch_array();
+$sqlx = "select * from plaza_tablero where tidx='".$bno."'"; /* 받아온 idx값을 선택 */
+$resultx = mysqli_query($con, $sqlx); 
+$board = mysqli_fetch_array($resultx);
 $pick = $board['unumero'];
 
 echo $lock;
@@ -71,6 +70,7 @@ if($lock==1){?><script type="text/javascript">location.replace("read.php?tidx=<?
 
 return false;    
 }
+mysqli_close($con);
 ?>
 
 <script type="text/javascript">location.replace("read.php?tidx=<?php echo $bno; ?>");</script>
