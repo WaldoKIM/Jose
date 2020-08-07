@@ -5,6 +5,17 @@ header('Content-Type: text/html; charset=UTF-8');
 $uid = $_POST["uid"];
 $pwd = $_POST["usnp"];
 
+if($uid == null){ // 아이디가 존재하지 않는다면
+    echo "
+        <script type='text/javascript'>
+            alert(\"잘못된 접근입니다.\");
+            history.back();
+        </script>
+    ";
+    return false;
+};
+
+
 
 // DB 연결
 include "../inc/dbcon.php";
@@ -26,10 +37,11 @@ $array = mysqli_fetch_array($result);
 // echo $row[0]."/".$row[1]."/".$row[2];
 
 // 아이디 검사
-if($uid  != $array["uid"]){ // 아이디가 존재하지 않는다면
+
+if($uid != $array["uid"]){ // 아이디가 존재하지 않는다면
     echo "
         <script type='text/javascript'>
-            alert(\"등록되지 않은 이메일 주소입니.\");
+            alert(\"등록되지 않은 이메일 주소입니다.\");
             history.back();
         </script>
     ";
@@ -67,7 +79,7 @@ $_SESSION["unumero"] = $array["unumero"];
 
 
 // echo $_SESSION["uid"]."/".$_SESSION["uname"];
-if ($_SESSION['uid'] == 'rootkim@admin.com'){
+if ($_SESSION['uid'] == 'intkim777@gmail.com'){
     echo "
     <script type='text/javascript'>
         alert('welcomeback, commander!');

@@ -1,5 +1,7 @@
 <?php include "../../inc/dbcon.php"; 
 header('Content-Type: text/html; charset=UTF-8');
+ini_set('display_errors', '0');
+
 //각 변수에 write.php에서 input name값들을 저장한다
 $username = $_POST['unombre'];
 $useridx = $_POST['unumero'];

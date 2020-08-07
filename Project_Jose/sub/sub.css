@@ -5,10 +5,10 @@
 @font-face { font-family: 'SeoulNamsanM'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff'); font-weight: normal; font-style: normal; }
 
 /* Css Reset */
-body,h1,h2,h3,p,div,ul,ol,li,dl,dt,dd{margin:0;padding:0}
-body{font-family:"Nanum+Gothic","맑은 고딕", "apple_gothic",sans-serif;font-size:16px;line-height:1.5;letter-spacing:-0.05em}
+body,h1,h2,h3,p,div,ul,ol,li,dl,dt,dd{margin:0;padding:0;color:#382929}
+body{font-family:"Nanum+Gothic","맑은 고딕", "apple_gothic",sans-serif;font-size:16px;line-height:1.5;letter-spacing:-0.05em;color:#382929}
 ul,li{list-style:none}
-a{text-decoration:none;color:#000}
+a{text-decoration:none;color:#382929}
 address{font-style:normal}
 /* defalut font */
 
@@ -71,13 +71,16 @@ input[type="checkbox"]:checked ~ .check:after
 
 /* skip menu */
 .skipMenu{position:relative}
-.skipMenu a{position:absolute;top:-40px;left:0;width:138px;border:1px solid #4ec53d;background:darkblue;text-align:center}
+.skipMenu a{position:absolute;top:-40px;left:0;width:138px;border:1px solid #4ec53d;background:darkblue;text-align:center;z-index:-1000}
 .skipMenu a:active,.skipMenu a:focus{top:0;z-index:1000;text-decoration:none}
 .skipMenu span{display:inline-block;padding:2px 6px 0 0;color:#fff;letter-spacing:-1px;font-size:16px;line-height:32px}
 /* Css started here */
-.header{height:100px;border-top:1px solid white;box-sizing:border-box}
+/*.header{height:100px;border-top:1px solid white;box-sizing:border-box}*/
 .header .logo{width:80px;height:60px;position:relative;top:35px;left:35px;font-family:"SeoulNamsanM","sans-serif";color:#3d3724;font-size:20pt;margin-top:3px;line-height:30px;background:url(../images/logo.png) no-repeat;padding-left:60px}
 .header .logo a{display:block;position:absolute;text-align:right;left:5px; width:130px;height:60px;font-size:22pt;}
+.header{height:100px;border-top:1px solid white;box-sizing:border-box;position: fixed;width: 100%; z-index:888;background-color:rgba(255,255,255,1);border-bottom:2px solid #fff;opacity: 0.9}
+
+.header:hover{height:110px;border-top:1px solid white;box-sizing:border-box;position: fixed;width: 100%; z-index:888;background-color:rgba(255,255,255,1);border-bottom:2px solid #cbcbcb;opacity:1}
 .GNB{width:1200px;height:80px; margin:-5px auto 0} /*position 이 필요한지, 필요하다면 하위 항목에 불필요한 포지션은 없는지 확인할 것*/
 .GNB_title{position:absolute;left:-9999px;top:-9999px}
 .GNB_position{line-height:20px;list-style:none;float:right;margin:10px 30px 0 0; font-weight:700;color:#3d3724}
@@ -128,8 +131,9 @@ input[type="checkbox"]:checked ~ .check:after
 .GNB_gallery>a {font-size:14pt; color: #382929}
 .GNB_gallery>ul {margin-left:65px;}
 .GNB_gallery{z-index:3;list-style:none;margin-right:70px;height:30px}
-.GNB_gallery:hover #gallery{animation:gallery_1 0.5s;animation-fill-mode:forwards; visibility:visible}
-@keyframes gallery_1{100% {width:440px}100%{margin-left: -95px}}
+.GNB_gallery:hover #gallery{animation:gallery_1 0.5s,gallery_2 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes gallery_1{100% {width:440px}}
+@keyframes gallery_2{100%{margin-left: -105px}}
 .GNB_gallery>a:hover{color:#dda611;text-shadow:2px 2px lightgray}
 .GNB_gallery:hover>#gallery li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
 .GNB_gallery ul li a:hover{color:lavenderblush;font-size:17px;  font-weight:bold}
@@ -139,8 +143,12 @@ input[type="checkbox"]:checked ~ .check:after
 .GNB_cappilla>a {font-size:14pt; color: #382929}
 .GNB_cappilla>ul {margin-left:65px;}
 .GNB_cappilla{z-index:4;list-style:none;margin-right:65px;height:30px}
-.GNB_cappilla:hover #cappilla{animation:cappilla_1 0.5s;animation-fill-mode:forwards; visibility:visible}
-@keyframes cappilla_1{100% {width:470px}100%{margin-left:-170px}}
+.GNB_cappilla:hover #cappilla{animation:cappilla_1 0.5s, cappilla_2 0.5s; animation-fill-mode:forwards; visibility:visible}
+@keyframes cappilla_1{100% {width:470px;}}
+@keyframes cappilla_2{100% {margin-left:-170px;}}
+/*멍청한 IE 시리즈를 위한 작은 배려, 하나의 키 프레임에 하나의 애니메이션만 넣을 것.*/
+
+
 .GNB_cappilla>a:hover{color:#4c9a0a;text-shadow:2px 2px lightgray}
 .GNB_cappilla:hover>#cappilla li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
 .GNB_cappilla ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
@@ -150,8 +158,9 @@ input[type="checkbox"]:checked ~ .check:after
 .GNB_jardin>a {font-size:14pt; color: #382929}
 .GNB_jardin>ul {margin-left: 165px;}
 .GNB_jardin{z-index:5;list-style:none;margin-right:65px;height:30px}
-.GNB_jardin:hover #jardin{animation:jardin_1 0.5s;animation-fill-mode:forwards; visibility:visible}
-@keyframes jardin_1{100% {width:460px}100%{margin-left:-5px }}
+.GNB_jardin:hover #jardin{animation:jardin_1 0.5s,jardin_2 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes jardin_1{100% {width:460px}}
+@keyframes jardin_2{100%{margin-left:-5px }}
 .GNB_jardin>a:hover{color:#0e3889;text-shadow:2px 2px lightgray}
 .GNB_jardin:hover>#jardin li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
 .GNB_jardin ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
@@ -161,8 +170,9 @@ input[type="checkbox"]:checked ~ .check:after
 .GNB_comida>a {font-size:14pt; color: #382929}
 .GNB_comida>ul{margin-left:145px;}
 .GNB_comida{z-index:6;list-style:none;margin-right:70px;height:30px}
-.GNB_comida:hover #comida{animation:comida_1 0.5s;animation-fill-mode:forwards; visibility:visible}
-@keyframes comida_1{100% {width:470px}100%{margin-left:-165px}}
+.GNB_comida:hover #comida{animation:comida_1 0.5s,comida_2 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes comida_1{100% {width:470px}}
+@keyframes comida_2{100%{margin-left:-165px}}
 .GNB_comida>a:hover{color:#1d065a;text-shadow:2px 2px lightgray}
 .GNB_comida:hover>#comida li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
 .GNB_comida ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
@@ -172,8 +182,9 @@ input[type="checkbox"]:checked ~ .check:after
 .GNB_plaza>a {font-size:14pt; color: #382929}
 .GNB_plaza>ul{margin-left:145px;}
 .GNB_plaza{z-index:7;list-style:none;height:30px}
-.GNB_plaza:hover #plaza{animation:plaza_1 0.5s;animation-fill-mode:forwards; visibility:visible}
-@keyframes plaza_1{100% {width:392px}100%{margin-left:-195px}}
+.GNB_plaza:hover #plaza{animation:plaza_1 0.5s,plaza_2 0.5s;animation-fill-mode:forwards; visibility:visible}
+@keyframes plaza_1{100% {width:392px}}
+@keyframes plaza_2{100%{margin-left:-195px}}
 .GNB_plaza>a:hover{color:#a30768;text-shadow:2px 2px lightgray}
 .GNB_plaza:hover>#plaza li a{animation:intro1 0.3s 1;animation-delay:0.6s;animation-fill-mode:forwards;}
 .GNB_plaza ul li a:hover{color:lavenderblush;font-size:17px;font-weight:bold}
@@ -184,42 +195,42 @@ input[type="checkbox"]:checked ~ .check:after
 .top_wrap{width:100%;position:absolute;top:0px;border-bottom:1px solid #f1f1f1}
 .top_menu{width:1200px; height:25px;margin:auto;}
 .topmenu_title{position:absolute;left:-9999px;top:-9999px}
-.top_menu ul {list-style:none;float:right;margin-right:34px }
+.top_menu ul {list-style:none;float:right;margin-right:15px }
 .top_menu ul li{float:left;margin:0px 16px}
 .day_n_night{padding-right:5px;}
 .day_n_night .day{width:23px; position:absolute;background: url(../images/btn_daymode.png)center no-repeat;text-indent:-9999px}
 .day_n_night .night{width:23px; position:absolute;background: url(../images/btn_nightmode.png)center no-repeat;text-indent:-9999px;z-index:-3 }
 .day_n_night .day:active,.day_n_night .day:focus{top:-40px}
+/*여기까지 haeder*/
 
-#sub1{width: 100%; height:3730px;background:url(../images/sub_bg1.png) center top no-repeat}
-.bg_fake{width: 100%; height:3730px;background:url(../images/fake.png)no-repeat; background-position: 50% 0%;background-attachment:scroll}
+
+
+
+
 body{min-width: 1200px;}
+main{border-top: 1px solid transparent;padding-top: 100px;}
+main .bg{background:url(../images/sub_bg1.png) no-repeat center top -55px; height: 100%;}
+/*.bg_fake{width: 100%; height:3730px;background:url(../images/fake.png)no-repeat; background-position: 50% 0%;background-attachment:scroll}*/
 main .main_wrap{width: 1200px; margin: 0 auto;}
-main .title_img{width: 100%; height: 440px; background:url(../images/sub1_title.png) center; margin: auto; overflow: hidden;min-width:1200px }
-main .title_img1{width: 100%; height: 440px; background-color: transparent}
-main .title{font-family:"SeoulNamsanM","sans-serif";font-size:36pt;width: 100%; height:152px; background-color: aqua;text-align: center;}
-
-
-.shortcut{width: 1200px;overflow: hidden;margin:auto;background-color:bisque;}
+main{height: 3730px;}
+main .title_img{width: 100%; height: 400px; background:url(../images/sub1_title.png) no-repeat top center; margin: auto; min-width:1200px }
+main .title{font-family:"SeoulNamsanM","sans-serif";font-size:36pt;width: 100%; height:65px; background-color: transparent;text-align: center; margin-top: 40px; color: black}
+.line1{display: block; width: 200px; border-top: 3px solid #d82323;margin: auto}
+.shortcut{width: 1200px; margin:auto;background-color:transparent;border-top: 1px solid transparent}
 .shortcut h2{position: absolute;top:-9999px;left:-9999px}
-.shortcut ul li{float:left;background-color:fuchsia}
+.shortcut ul{margin-top: 40px;}
+.shortcut ul li{float:left; font-size: 16pt;font-weight: 700; letter-spacing: -2px;}
 .shortcut ul a{text-align: center}
-
-/*서브 페이지1 바로가기 메뉴 간격*/
-.shortcut1{margin:0 50px 0 200px;}
-.shortcut2,.shortcut3{margin:0 50px 0 150px}
-.shortcut4{margin:0 100px 0 150px}
-/*서브 페이지2 바로가기 메뉴 간격*/
-.shortcuta{margin:0 100px 0 150px;}
-.shortcutb,.shortcutc{margin:0 50px 0 100px}
-.shortcutd{margin:0 100px 0 100px}
+.first{border-top: 1px solid transparent;clear: both;}
+/*#sub1{width: 100%; height:3730px;background:url(../images/sub_bg1.png) center top no-repeat}*/
 
 
 
+.footer{text-align: center; position:relative; top:0px; height:500px;  margin: auto; background:url(../images/footer_bg.png) no-repeat; background-position: center top; border-top: 1px solid transparent;width: 100%}
+.fwrap{width:1200px;margin: auto}
 
-.footer{text-align: center; position:relative; background:url(../images/footer_bg.png) no-repeat center top}
-.footer .logo{width:80px;height:60px;margin:auto;font-family:"SeoulNamsanM","sans-serif";font-size:20pt;line-height:30px;background:url(../images/logo.png) no-repeat;padding-left:60px}
-.footer .logo a{color:#3d3724;display:block;position:relative;text-align:right;left:-58px;width:130px;height:60px}
+.footer .logo{width:80px;height:60px;margin:-35px auto;font-family:"SeoulNamsanM","sans-serif";font-size:20pt;line-height:30px;background:url(../images/logo.png) no-repeat;padding-left:60px}
+.footer .logo a{color:#3d3724;display:block;position:relative;text-align:right;left:-58px;width:130px;height:60px;}
 .SNS{width:1200px;padding-top:90px;margin:auto;overflow:hidden;box-sizing: border-box}
 .SNS h2{position:absolute;top:-9999px;left:-9999px}
 .SNS .sns_icon_wrap{width:642px;overflow:hidden;margin:0 auto 80px}
@@ -234,14 +245,19 @@ main .title{font-family:"SeoulNamsanM","sans-serif";font-size:36pt;width: 100%; 
 .footer_info{width:1200px;margin:40px auto}
 .footer_info h2{position:absolute;top:-9999px;left:-9999px}
 .footer_info .wrap{width:642px;margin:auto;}
-.footer_law {float: left; overflow: hidden; margin: auto}
-.footer_law li {float: left; margin:0 5px 0 40px;}
-.site_link{float:left;margin-left:10px}
-.site_link .arrow{display: block; background:url(../images/arrow_footer.png)no-repeat 130px}
+.footer_law {float: left; overflow: hidden; margin:auto;}
+.footer_law li {float: left; margin:20px 5px 0 40px;}
+.site_link .exlink{float: left; margin:20px 5px 0 40px;}
+.site_link{float:left;margin-left:10px;}
+.site_link .arrow{display:inline-block; width: 30px; height: 30px;background:url(../images/arrow_footer.png)no-repeat center; position: absolute; top:18px;text-indent:-9999px;transform: rotate(180deg);}
 .site_link h3{font-weight:normal;font-size:1em; position:relative;z-index:21;}
-.site_link ul{position:relative;z-index:20;top:-170px;line-height:30px;padding:10px;border:2px inset #3ae9c6;background-color:rgba(23,225,212,0.1)}
+.site_link ul{position:absolute;z-index:20;bottom:230px;line-height:30px;padding:10px;border:2px inset #3ae9c6;background-color:rgba(23,225,212,0.1);display:none}
+
 .site_link li{background-color:rgba(255,255,255,0.9);border-bottom:1px dotted #3ae9c6;font-size:16px}
-.address {clear:both; position: relative;top:-80px;margin-bottom:-60px}
+.address {margin-top: 20px;}
 .address h2{position:absolute;top:-9999px;left:-9999px}
-.law_n_order{width:1200px;margin:auto;overflow:hidden}
+.law_n_order{width:1200px;margin-top: 10px;}
+.law_n_order p{width:1200px;margin-top: 10px;}
 .law_n_order h2{position:absolute;top:-9999px;left:-9999px}
+.texts{clear: both; margin-top:300px; background-color: transparent; height: 150px; margin: auto;border-top:1px dotted transparent;}
+/* 오른쪽 날개부분 position left 50% + 600px(콘텐츠 영역의 절반)으로 위치 고정시킬수 있다 함. 왼쪽은 반대로) */

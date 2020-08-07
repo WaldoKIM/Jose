@@ -65,8 +65,11 @@ $pick = $board['unumero'];
 if($pick==null)
 {echo "<script type='text/javascript'>
         alert(\"작성된 글이 없습니다.\");
+        window.history.go(-1);
         </script>";
-return false; };
+ 
+return false;
+};
 //관리자 통과
 if($lock==1){?><script type="text/javascript">location.replace("read.php?tidx=<?php echo $unumero; ?>");</script><?php    
 }else if($lock!= $pick){

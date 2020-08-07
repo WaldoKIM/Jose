@@ -113,8 +113,8 @@ $array = mysqli_fetch_array($result);
                 echo "<a href=\"#none\" onclick=\"logout_check()\">로그아웃</a> ";
                 echo "<a href=\"members/edit.php\">정보수정</a> ";
                 echo "<a href=\"board_noticex.php?tdx=$tid\">내 게시글 확인</a> ";
-                echo "<a href=\"index.php\">메인으로</a>"; 
-                    
+                echo "<a href='javascript:history.go(-1)'>메인으로</a>"; 
+                
             }
             };
         ?>

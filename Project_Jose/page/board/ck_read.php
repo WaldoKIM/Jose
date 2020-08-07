@@ -56,8 +56,8 @@ $resultx = mysqli_query($con, $sqlx);
 $board = mysqli_fetch_array($resultx);
 $pick = $board['unumero'];
 
-echo $lock;
-echo $pick;
+//echo $lock;
+//echo $pick;
     
 };    
 //관리자 통과
@@ -65,7 +65,7 @@ if($lock==1){?><script type="text/javascript">location.replace("read.php?tidx=<?
 }else if($lock!= $pick){
     echo "<script type='text/javascript'>
         alert(\"비밀글은 작성자와 운영자만 열람 가능합니다.\");
-        history.go(-1);
+      history.go(-1);
         </script>";
 
 return false;    

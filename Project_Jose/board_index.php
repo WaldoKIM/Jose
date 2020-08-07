@@ -72,6 +72,17 @@
               
                // $sql3 = mq("select * from reply where con_num='".$board['idx']."'");
               //  $rep_count = mysqli_num_rows($sql3);
+         $bno = $board["tidx"];
+                  
+         $boardtime = $board['tdate']; 
+$newDate = date("Y-m-d",strtotime($boardtime));
+ $timenow = date("Y-m-d");
+        			$sqlr = "select * from plaza_respuesta where tidx='".$bno."' order by ridx desc";
+            $resultr = mysqli_query($con, $sqlr);
+    		$reply_num = mysqli_num_rows($resultr); 
+		
+
+                  
               ?>
             
                     
@@ -82,12 +93,13 @@
       <tbody>
         <tr>
           <td width="70"><?php echo $board['tidx']; ?></td>
-          <td width="500"><?php 
+          <td width="500"><?php                
           if($board['tatencion']=="1"){ ?>  <a href='page/board/read.php?tidx=<?php echo $board["tidx"]; ?>'><?php echo '<b>&#91;공지사항&#93;&nbsp;'.$title.'</b></a>'; }        
            else if($board['tsecret']=="1")
           { ?><a href='page/board/ck_read.php?tidx=<?php echo $board["tidx"];?>'><?php echo $title.'&nbsp;&#40;<i>비밀글</i>&#41;</a>';
             }else{  ?>
-              <a href='page/board/read.php?tidx=<?php echo $board["tidx"]; ?>'><?php echo $title; }?></a></td>
+              <a href='page/board/read.php?tidx=<?php echo $board["tidx"]; ?>'><?php echo $title; }?> &#91;<?php echo  $reply_num;?>&#93<?php if($newDate==$timenow){
+              echo ' <b><i>새글</i></b>';}else{ echo '';}?></a></td>
           <td width="120"><?php echo $board['unombre']?></td>
           <td width="100"><?php echo $board['tdate']?></td> 
           <td width="100"><?php echo $board['thit']; ?></td>

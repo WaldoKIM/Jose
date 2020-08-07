@@ -53,7 +53,7 @@ $_SESSION["unumero"] = $array["unumero"];
 
 
 // echo $_SESSION["uid"]."/".$_SESSION["uname"];
-if ($_SESSION['uid'] == 'rootkim@admin.com'){
+if ($_SESSION['uid'] == 'intkim777@gmail.com'){
     echo "
     <script type='text/javascript'>
         alert('welcomeback, commander!');

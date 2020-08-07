@@ -34,7 +34,7 @@
     adaptiveHeightSpeed: 500,
     video: false,
     useCSS: false,
-    preloadImages: 'visible',
+    preloadImages: 'all',
     responsive: true,
     slideZIndex: 0,
     wrapperClass: 'bx-wrapper',
@@ -1252,15 +1252,6 @@ ani1s.background = "transparent";
      * @param e (event)
      *  - DOM event object
      */
-      
-      
-      
-      
-      
-      
-      
-      
-      
     var onTouchStart = function(e) {
       //disable slider controls while user is interacting with slides to avoid slider freeze that happens on touch devices when a slide swipe happens immediately after interacting with slider controls
       slider.controls.el.addClass('disabled');
@@ -1368,10 +1359,93 @@ ani1s.background = "transparent";
         distance = Math.abs(slider.touch.start.x - slider.touch.end.x);
         if (distance >= slider.settings.swipeThreshold) {
           if (slider.touch.start.x > slider.touch.end.x) {
-        //☆I have no idea but an original code below was opposite. first line was next and second line was prev. why???
-            el.goToPrevSlide();
+            var pagerIndex = parseInt(slider.active.index) - 1;
+            var ani1 = document.querySelector(".uno_ani");
+var ani1s = ani1.style;
+var ani2 = document.querySelector(".dos_ani");
+var ani2s = ani2.style;
+var ani3 = document.querySelector(".tres_ani");
+var ani3s = ani3.style;
+var ani4 = document.querySelector(".quatro_ani");
+var ani4s = ani4.style;        
+//
+        
+ani1s.animationName = "none";
+ani1s.animationDelay = "0";        
+ani2s.animationName = "none";
+ani2s.animationDelay = "0";        
+ani3s.animationName = "none";
+ani3s.animationDelay = "0";
+ani4s.animationName = "none";        
+ani4s.animationDelay = "0";
+        
+if(pagerIndex == 0){
+ani1s.background = "red";
+ani4s.background = "transparent";
+ani3s.background = "transparent";
+ani2s.background = "transparent"    
+	}else if(pagerIndex == 1){
+ani2s.background = "red";
+ani3s.background = "transparent";
+ani1s.background = "transparent";
+ani4s.background = "transparent"        
+}else if(pagerIndex == 2){
+ani3s.background = "red";
+ani2s.background = "transparent";
+ani4s.background = "transparent";
+ani1s.background = "transparent"    
+}else{
+ani4s.background = "red";
+ani2s.background = "transparent";
+ani3s.background = "transparent";
+ani1s.background = "transparent";    
+}  
+              el.goToPrevSlide();
           } else {
-            el.goToNextSlide();
+  var pagerIndex = parseInt(slider.active.index) + 1;
+        
+    var ani1 = document.querySelector(".uno_ani");
+var ani1s = ani1.style;
+var ani2 = document.querySelector(".dos_ani");
+var ani2s = ani2.style;
+var ani3 = document.querySelector(".tres_ani");
+var ani3s = ani3.style;
+var ani4 = document.querySelector(".quatro_ani");
+var ani4s = ani4.style;        
+//
+        
+ani1s.animationName = "none";
+ani1s.animationDelay = "0";        
+ani2s.animationName = "none";
+ani2s.animationDelay = "0";        
+ani3s.animationName = "none";
+ani3s.animationDelay = "0";
+ani4s.animationName = "none";        
+ani4s.animationDelay = "0";
+        
+if(pagerIndex == 1){
+ani2s.background = "red";
+ani1s.background = "transparent";
+ani3s.background = "transparent";
+ani4s.background = "transparent"    
+	}else if(pagerIndex == 2){
+ani3s.background = "red";
+ani2s.background = "transparent";
+ani1s.background = "transparent";
+ani4s.background = "transparent"        
+}else if(pagerIndex == 3){
+ani4s.background = "red";
+ani2s.background = "transparent";
+ani3s.background = "transparent";
+ani1s.background = "transparent"    
+}else{
+ani1s.background = "red";
+ani2s.background = "transparent";
+ani3s.background = "transparent";
+ani4s.background = "transparent";    
+}              
+   
+              el.goToNextSlide();
           }
           el.stopAuto();
         }
@@ -1518,19 +1592,13 @@ ani1s.background = "transparent";
     //추가라인
        
 
-var bbg = document.querySelector(".main_banner_wrap");
-var bbgs = bbg.style;
-
-
+var bbg = document.querySelector(".main_banner_wrap")
+var bbgs = bbg.style
     
-if(slideIndex==0 || slideIndex==4 ){bbgs.background = "url(images/main_banner_bg0.png)top center";
-
-}else if(slideIndex==1 ) {bbgs.background = "url(images/main_banner_bg2.png)top center";
-
-}else if(slideIndex==2 ) {bbgs.background = "url(images/main_banner_bg3.png)top center";
-
- }else if(slideIndex== -1 || slideIndex== 3) {bbgs.background = "url(images/main_banner_bg4.png)top center";
-
+if(slideIndex==0 || slideIndex==4 ){bbgs.background = "url(images/main_banner_bg0.png)top center"
+   }else if(slideIndex==1 ) {bbgs.background = "url(images/main_banner_bg2.png)top center"; 
+}else if(slideIndex==2 ) {bbgs.background = "url(images/main_banner_bg3.png)top center"
+         }else if(slideIndex== -1 || slideIndex== 3) {bbgs.background = "url(images/main_banner_bg4.png)top center"
 }
         
         
@@ -1641,8 +1709,6 @@ if(slideIndex==0 || slideIndex==4 ){bbgs.background = "url(images/main_banner_bg
       }
       if (slider.settings.ariaHidden) { applyAriaHiddenAttributes(slider.active.index * getMoveBy()); }
     };
-      
-      
 
     /**
      * Transitions to the next slide in the show
@@ -1650,50 +1716,7 @@ if(slideIndex==0 || slideIndex==4 ){bbgs.background = "url(images/main_banner_bg
     el.goToNextSlide = function() {
       // if infiniteLoop is false and last page is showing, disregard call
       if (!slider.settings.infiniteLoop && slider.active.last) { return; }
-        
       var pagerIndex = parseInt(slider.active.index) + 1;
-        
-    var ani1 = document.querySelector(".uno_ani");
-var ani1s = ani1.style;
-var ani2 = document.querySelector(".dos_ani");
-var ani2s = ani2.style;
-var ani3 = document.querySelector(".tres_ani");
-var ani3s = ani3.style;
-var ani4 = document.querySelector(".quatro_ani");
-var ani4s = ani4.style;        
-//
-        
-ani1s.animationName = "none";
-ani1s.animationDelay = "0";        
-ani2s.animationName = "none";
-ani2s.animationDelay = "0";        
-ani3s.animationName = "none";
-ani3s.animationDelay = "0";
-ani4s.animationName = "none";        
-ani4s.animationDelay = "0";
-        
-if(pagerIndex == 1){
-ani2s.background = "red";
-ani1s.background = "transparent";
-ani3s.background = "transparent";
-ani4s.background = "transparent"    
-	}else if(pagerIndex == 2){
-ani3s.background = "red";
-ani2s.background = "transparent";
-ani1s.background = "transparent";
-ani4s.background = "transparent"        
-}else if(pagerIndex == 3){
-ani4s.background = "red";
-ani2s.background = "transparent";
-ani3s.background = "transparent";
-ani1s.background = "transparent"    
-}else{
-ani1s.background = "red";
-ani2s.background = "transparent";
-ani3s.background = "transparent";
-ani4s.background = "transparent";    
-}    
-      	        
       el.goToSlide(pagerIndex, 'next');
     };
 
@@ -1704,46 +1727,6 @@ ani4s.background = "transparent";
       // if infiniteLoop is false and last page is showing, disregard call
       if (!slider.settings.infiniteLoop && slider.active.index === 0) { return; }
       var pagerIndex = parseInt(slider.active.index) - 1;
-    var ani1 = document.querySelector(".uno_ani");
-var ani1s = ani1.style;
-var ani2 = document.querySelector(".dos_ani");
-var ani2s = ani2.style;
-var ani3 = document.querySelector(".tres_ani");
-var ani3s = ani3.style;
-var ani4 = document.querySelector(".quatro_ani");
-var ani4s = ani4.style;        
-//
-        
-ani1s.animationName = "none";
-ani1s.animationDelay = "0";        
-ani2s.animationName = "none";
-ani2s.animationDelay = "0";        
-ani3s.animationName = "none";
-ani3s.animationDelay = "0";
-ani4s.animationName = "none";        
-ani4s.animationDelay = "0";
-        
-if(pagerIndex == 0){
-ani1s.background = "red";
-ani4s.background = "transparent";
-ani3s.background = "transparent";
-ani2s.background = "transparent"    
-	}else if(pagerIndex == 1){
-ani2s.background = "red";
-ani3s.background = "transparent";
-ani1s.background = "transparent";
-ani4s.background = "transparent"        
-}else if(pagerIndex == 2){
-ani3s.background = "red";
-ani2s.background = "transparent";
-ani4s.background = "transparent";
-ani1s.background = "transparent"    
-}else{
-ani4s.background = "red";
-ani2s.background = "transparent";
-ani3s.background = "transparent";
-ani1s.background = "transparent";    
-}	    
       el.goToSlide(pagerIndex, 'prev');
     };
 
@@ -1853,7 +1836,7 @@ ani4s.animationPlayState = "running";
 ani4s.animationDelay = "0s";
 ani4s.animationName = "bar1";
 }	
-//☆ This make progress bar animation. this code based on default interval(8000) and 4slides.
+//☆ This make progress bar animation. this code based on default interval(4000) and 4slides.
 //☆If you need to change interval or number of slide, you also have to change a delay and progress precentage in animation part(css)
 //☆For example, I set a color of progress bar as transparent after first 25% of animation in keyframes since I have 4slide     
         

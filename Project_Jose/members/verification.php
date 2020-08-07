@@ -23,7 +23,7 @@ if(isset($_GET['uid']) && isset($_GET['code']))
 {
 	$id=$_GET['uid'];
 	$code=$_GET['code'];
-	$con = mysqli_connect("localhost", "morpheus", "glaTprhrkdgksdkcla!2", "morpheus") or die("DB에 접속할 수 없습니다.");
+	$con = mysqli_connect("localhost", "comosellama", "llama", "latina") or die("DB에 접속할 수 없습니다.");
 mysqli_set_charset($con, "utf8");
     
 	$select="select yonosoyunrobot from miembros where unumero=$id and iamnotarobot=$code;";
