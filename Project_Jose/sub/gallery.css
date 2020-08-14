@@ -1,9 +1,0 @@
-main .title_img{width: 100%; height: 400px; background:url(../images/sub_title8.png) no-repeat top center; margin: auto; min-width:1200px }
-main .title{font-family:"SeoulNamsanM","sans-serif";font-size:36pt;width: 100%; height:65px; background-color: transparent;text-align: center; margin-top: 40px; color: black}
-img {margin: 0; padding: 0}
-/*text-shadow:4px 4px #271c1c*/
-
-.line1{display: block; width: 200px; border-top: 3px solid #d82323;margin: auto}
-.shortcuta{margin:0 100px 0 50px;}
-.shortcutb,.shortcutc{margin:0 90px 0 130px}
-.shortcutd{margin:0 50px 0 80px}

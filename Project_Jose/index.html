@@ -1,10 +1,133 @@
-<html>
-	<head>
-		<title>�ε���</title>
-	</head>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Project Morpheus</title>
+<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/examples.css" /> -->
+<style>
+/* Sections */
+#section0 img,#section1 img{margin:20px 0 0 0}
+#section2 img{margin:20px 0 0 52px}
+#section3 img{bottom:0px;position:absolute;margin-left:-420px}
+.intro p{width:50%;margin:0 auto;font-size:1.5em}
+* {margin: 0; padding: 0};        
+body {background: #000;};
+canvas {display: block; width: 98%; height: auto; position: fixed; z-index:-1; top:0px;}
+        div {width: 100%; height: 3000px}        
+ div.box { width:415px; height:150px; border:2px solid #fff; position: absolute; left:50%; top:50%;  z-index: 2; margin: -75px 0 0 -207px;padding: 0 20px 0;background-color: rgba(0, 0, 0, 0.7);}
+div.box1 {width:100%; height:920px; border:2px solid #fff; position: absolute;z-index:1;box-sizing: border-box; }        
+h3 {text-align: center; color: white; margin-top: 35px;}
+        .box2{position: fixed;width: 100%; height: 3000px; background-color: black}
+        @import url("http://neilcarpenter.com/demos/canvas/matrix/font/matrix-code.ttf");
+        
+    .cnt {display: block; width: 100px; margin: 5px auto;text-align: center;color: chartreuse; text-decoration: none; font-size: 12pt; font-weight: 700;}    
+    .imgs{margin-left: 100px}
+    .titles{color: white; position: absolute; top: 670px; left: 850px;}
+    .titles3{color: white; position: absolute; top: 400px; left: 770px;font-size: 36pt; font-weight: 700; letter-spacing: 10px}
+    .coding{background-image:url(developer.jpg);}
+</style>
+<!--[if IE]>
+<script type="text/javascript">
+	 var console = { log: function() {} };
+</script>
+<![endif]-->
 
-	<body>
-		�ε��� ������
-		<a href="http://morpheus.dothome.co.kr/hello.html"> Hello </a>
-	</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#fullpage').fullpage({
+			sectionsColor: ['#161d1c', '#171a16', '#578028', 'whitesmoke', '#ccddff'],
+			anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+			menu: '#menu',
+			scrollingSpeed: 1000
+		});
+	});
+</script>
+
+</head>
+<body>
+
+
+<div id="fullpage">
+<div class="section " id="section0">
+	<!-- 수정 -->
+<div class="box">
+<h3>본 사이트는 비 상업적 목적의 포트폴리오 용으로 제작되었으며,
+본 사이트 내 사용된 콘텐츠들의 모든 저작권은 해당 권리자에게 있음을 밝힙니다.</h3>
+<a class="cnt" href="latina/index1.php">확인</a>   
+</div>	
+<canvas>
+</canvas>
+	<!-- 여기까지 -->
+</div>
+
+<div class="section" id="section2">
+<!-- 수정 -->
+	<div class="intro">
+		<h2 class="titles">제작자 소개</h2>
+		<p>Hello there! Mighty fine day! if you ask me, I'm Waldo Kim</p>
+		<div class="imgs">
+		<img src="bySynthakatVR.png" alt="diadelmuerto" />
+		<p>안녕하신가! 힘세고 강한 하루! 만일 내게 묻는다면 나는 김왈도.</p>
+		</div>
+	</div>
+<!-- 여기까지 -->
+</div>
+<div class="section" id="section3">
+<!-- 수정 -->
+	<div class="intro">
+	<div class="coding"></div>
+		<h2 class="titles3">감사합니다</h2>
+		
+	</div>
+
+</div>
+
+
+</body>
+<script>
+// Initialising the canvas
+var canvas = document.querySelector('canvas'),
+    ctx = canvas.getContext('2d');
+    
+
+// Setting the width and height of the canvas
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Setting up the letters
+var letters = 'MATRIX system MORPHEUS error TRINITY 0010011 NEO NEBUCHADNEZZAR there is AGENT SMITH no spoon THE ORACLE 공사중 입니다 文明五朝蘚世宗大王 天下無敵 free your mind 미완성 코드 THE ARCHITECT woman in red dress';
+letters = letters.split('');
+
+// Setting up the columns
+var fontSize = 10,
+    columns = canvas.width / fontSize;
+
+// Setting up the drops
+var drops = [];
+for (var i = 0; i < columns; i++) {
+  drops[i] = 1;
+}
+
+// Setting up the draw function
+function draw() {
+    ctx.font = "16pt matrix-code";
+  ctx.fillStyle = 'rgba(0, 0, 0, .1)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  for (var i = 0; i < drops.length; i++) {
+    var text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillStyle = '#0f0';
+    ctx.fillText(text, i * fontSize, drops[i] * 20);
+    drops[i]++;
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+      drops[i] = 0;
+    }
+  }
+}
+
+// Loop the animation
+setInterval(draw, 25);
+</script>
 </html>

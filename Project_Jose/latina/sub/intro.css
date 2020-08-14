@@ -1,0 +1,40 @@
+main .title_img{width: 100%; height: 400px; background:url(../images/sub1_title.jpg) no-repeat top center; margin: auto; min-width:1200px }
+main .title{font-family:"SeoulNamsanM","sans-serif";font-size:36pt;width: 100%; height:65px; background-color: transparent;text-align: center; margin-top: 40px; color: black}
+img {margin: 0; padding: 0}
+/*text-shadow:4px 4px #271c1c*/
+
+.line1{display: block; width: 200px; border-top: 3px solid #d82323;margin: auto}
+.shortcuta{margin:0 100px 0 50px;}
+.shortcutb,.shortcutc{margin:0 90px 0 130px}
+.shortcutd{margin:0 50px 0 80px}
+
+.first{border-top: 1px solid transparent;clear: both;overflow: hidden;}
+.first_div{margin: 50px 0 0 50px;border-top: 1px solid transparent;box-sizing: border-box;}
+.first_div .text{float: left}
+.first_div .imgs{background-color: chocolate;width: 435px; height: 555px;float: left}
+.first .clear {clear: both; margin-bottom: 20px;}
+.first_div .text{width: 600px;}
+.anchor1{clear: both; position: relative;top:-100px;}
+
+.founder { margin:50px 0 100px 0;width:100%;overflow: hidden }
+.founder h2 {margin-left:50px;}
+.founder .text{margin: 50px 0 0 50px;border-top: 1px solid transparent;box-sizing: border-box;}
+.founder .principal{display: block; position: relative; width: 800px; text-align: right; float: right}
+.founder .imgs{height: 530px; width:1200px;  clear: both}
+.founder .portrait1{display: block; float: left}
+.founder .portrait2{display: block; float: left}
+.founder .portrait3{display: block; float: left}
+.founder .portrait4{display: block; float: left}
+.founder .boss{clear: both;}
+.founder .btext{display: block; position: relative; top:0px; width: 800px; text-align: left; float: left}
+.anchor2{clear: both; position: relative;top:-50px;}
+
+.donation{text-align: center;margin:50px 0 100px 0;width:100%;overflow: hidden }
+.donation .imgs1{width: 240px; margin: auto} 
+.donation .imgs2{width:150px; margin: auto}
+.anchor3{clear: both; position: relative;top:-50px;}
+
+.opprtunity{width:100%;overflow: hidden}
+
+
+
